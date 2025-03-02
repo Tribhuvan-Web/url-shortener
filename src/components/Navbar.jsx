@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoIosMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
+import { color } from "chart.js/helpers";
+import "../App.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -9,70 +11,81 @@ const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <div className="h-16 bg-custom-gradient  z-50 flex items-center sticky top-0 ">
-      <div className="lg:px-14 sm:px-8 px-4 w-full flex justify-between">
+    <div className={"w-full h-16 z-50 flex sticky top-0 bg-[#2c4850]"}>
+      <div className="w-[55%] sm:px-10 sm:py-2 px-6 py-2">
         <Link to="/">
-          <h1 className="font-bold text-3xl text-white italic sm:mt-0 mt-2">
-            Linklytics
-          </h1>
+          <h1 className="font-bold text-3xl text-white italic">Linklytics</h1>
         </Link>
+      </div>
+      <div
+        className={`sm:flex sm:justify-between sm:static  items-center gap-4 sm:flex-row sm:w-full sm:px-10 sm:py-2 px-6 py-2 sm:shadow-none shadow-lg ${
+          navbarOpen
+           ? "fixed right-0 top-0 h-full w-[150px] bg-[#2c4850] flex-col ease-out duration-300"
+            : "fixed right-[-200px] top-0 h-full w-[150x] bg-[#2c4850] flex-col ease-out duration-300"
+        }   `}
+      >
         <ul
-          className={`flex sm:gap-10 gap-4 sm:items-center sm:mt-1 sm:pt-0 pt-3 text-slate-800 sm:static absolute left-0 top-[62px] sm:shadow-none shadow-md ${
-            navbarOpen ? "h-fit sm:pb-0 pb-5" : "h-0 overflow-hidden"
-          }  transition-all duration-100 sm:h-fit sm:bg-none  bg-custom-gradient sm:w-fit w-full sm:flex-row flex-col px-4 sm:px-0`}
+          className={
+            "flex flex-col sm:flex-row sm:gap-6 gap-3 text-white sm:mt-0 mt-14"
+          }
         >
-          <li className="hover:text-btnColor font-[500]  transition-all duration-150">
+          <li className="hover:font-bold font-[500]  ">
             <Link
               className={`${
-                path === "/" ? "text-white font-semibold" : "text-gray-200"
+                path === "/home" ? "text-[#76ABAE] font-bold " : "text-gray-50"
               }`}
-              to="/"
+              to="/home"
             >
               Home
             </Link>
           </li>
-          <li className="hover:text-btnColor font-[500]  transition-all duration-150">
+          <li
+            className={"hover:font-bold font-[500] "}
+          >
             <Link
               className={`${
-                path === "/about" ? "text-white font-semibold" : "text-gray-200"
+                path === "/about" ? "text-[#76ABAE] font-bold" : "text-gray-50"
               }`}
               to="/about"
             >
               About
             </Link>
           </li>
-          <li className="hover:text-btnColor font-[500]  transition-all duration-150">
+          <li className="hover:font-bold font-[500]  ">
             <Link
               className={`${
                 path === "/dashboard"
-                  ? "text-white font-semibold"
-                  : "text-gray-200"
+                  ? "text-[#76ABAE] font-bold"
+                  : "text-gray-50"
               }`}
               to="/dashboard"
             >
               Dashboard
             </Link>
           </li>
+        </ul>
+        <div className={`flex sm:flex-row flex-col gap-4 sm:mt-0 mt-4
+          ${navbarOpen ? "fixed bottom-4" : ""}`}>
           <Link to={"/register"}>
-            <li className=" sm:ml-0 -ml-1 bg-rose-700 text-white  cursor-pointer w-24 text-center font-semibold px-2 py-2 rounded-md  hover:text-slate-300   transition-all duration-150">
+            <li className="bg-[#76ABAE] hover:bg-white hover:text-[#31363F] opacity-[0.8] list-none  text-white  cursor-pointer text-center font-semibold  px-3 py-2  rounded-md transition-all duration-150">
               SignUp
             </li>
           </Link>
-          <button className="sm:ml-0 -ml-1 bg-rose-700 text-white  cursor-pointer w-24 text-center font-semibold px-2 py-2 rounded-md  hover:text-slate-300   transition-all duration-150">
+          <button className="bg-[#76ABAE] hover:bg-white hover:text-[#31363F] opacity-[0.8] text-white  cursor-pointer text-center font-semibold  px-3 py-2  rounded-md transition-all duration-150">
             LogOut
           </button>
-        </ul>
-        <button
-          onClick={() => setNavbarOpen(!navbarOpen)}
-          className="sm:hidden flex items-center sm:mt-0 mt-2"
-        >
-          {navbarOpen ? (
-            <RxCross2 className="text-white text-3xl" />
-          ) : (
-            <IoIosMenu className="text-white text-3xl" />
-          )}
-        </button>
+        </div>
       </div>
+      <button
+        onClick={() => setNavbarOpen(!navbarOpen)}
+        className="sm:hidden flex items-center sm:mt-0 fixed right-4 top-4"
+      >
+        {navbarOpen ? (
+          <RxCross2 className="text-white text-3xl" />
+        ) : (
+          <IoIosMenu className="text-white text-3xl" />
+        )}
+      </button>
     </div>
   );
 };

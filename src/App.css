@@ -1,0 +1,12 @@
+
+:root {
+    --primary-color: #dd0c97;
+}
+.btn-color{
+    background-color: var(--primary-color);
+    
+}
+.btn-color:hover {
+    background-color: white;
+    color: var(--primary-color);
+}

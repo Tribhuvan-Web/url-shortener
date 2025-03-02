@@ -6,9 +6,9 @@ const DashboardLayout = () => {
   return (
 
      
-    <div className="lg:px-14 sm:px-8 px-4 min-h-[calc(100vh-64px)]">
+    <div className="lg:px-14 sm:px-8 px-4 min-h-[calc(100vh-64px)] ">
       <div className="lg:w-[90%] w-full mx-auto py-16">
-        <div className="h-96 relative">
+        <div className="h-96 relative text-white">
           <Graph graphData={dummyData} />
         </div>
         <div className="py-5 sm:text-end text-center">

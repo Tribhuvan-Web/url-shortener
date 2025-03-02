@@ -1,3 +1,5 @@
+import { keyframes, transform } from 'motion';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -8,6 +10,7 @@ export default {
         "custom-gradient-2": "linear-gradient(to left, #3b82f6, #f43f5e)",
         "card-gradient": "linear-gradient(to right, #38b2ac, #4299e1)",
       },
+
       colors: {
         navbarColor: "#ffffff",
         btnColor: "#3364F7",
@@ -27,6 +30,20 @@ export default {
   variants: {
     extend: {
       backgroundImage: ["responsive"],
+    },
+
+    animation: {
+      popOut: 'popOut 1.5s infinite',
+    },
+    keyframes: {
+      popOut: {
+        '0%': {
+          transform: 'translateX(-100%)',
+        },
+        '100%': {
+          transform: 'translateX(0)',
+        }
+      },
     },
   },
 

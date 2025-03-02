@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import LandingPage from "./components/LandingPage";
-import AboutPage from "./components/AboutPage";
+import LandingPage from "./components/pages/LandingPage";
+import AboutPage from "./components/pages/AboutPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import RegisterPage from "./components/RegisterPage";
+import RegisterPage from "./components/pages/RegisterPage";
 import { Toaster } from "react-hot-toast";
-import Login from "./components/LoginPage";
+import Login from "./components/pages/LoginPage";
 import DashboardLayout from "./Dashboard/DashboardLayout";
 
 export default function App() {

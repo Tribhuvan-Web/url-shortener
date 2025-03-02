@@ -43,13 +43,13 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-[clac(100vh-100px)]  p-4 bg-gradient-to-t to-[#A5C9CA] from-[#395B64]   flex justify-center items-center">
-      <div className="sm:w-[700px] w-[600] sm:m-4 m-1 sm:flex shadow-custom ">
+    <div className="min-h-[clac(100vh-100px)]  bg-gray-50 dark:bg-gray-900  p-4  flex justify-center items-center">
+      <div className="sm:w-[700px] w-[600] sm:m-4 m-1 sm:flex shadow-2xl shadow-[#2c4850] rounded-lg ">
         <form
           onSubmit={handleSubmit(registerHandler)}
           className="sm:w-[350px] w-[350px] py-8 px-4 sm:px-10 rounded-md"
         >
-          <h1 className="text-center font-serif text-white font-bold lg:text-2xl text-xl">
+          <h1 className="text-center font-serif text-[#76ABAE] font-bold lg:text-2xl text-xl">
             Create an account
           </h1>
 
@@ -66,10 +66,11 @@ const RegisterPage = () => {
               required
               id="username"
               type="text"
-              message="Username is required"
+              message="*Username is required"
               placeholder="Type your username"
               register={register}
               errors={errors}
+              className={"text-white"}
             />
 
             <div className="flex items-center gap-2">
@@ -86,6 +87,7 @@ const RegisterPage = () => {
               placeholder="Type your email"
               register={register}
               errors={errors}
+              className={"text-white"}
             />
 
             <div className="flex items-center gap-2">
@@ -103,25 +105,26 @@ const RegisterPage = () => {
               register={register}
               min={6}
               errors={errors}
+              className={"text-white"}
             />
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-4">
             <button
               disabled={loader}
               type="submit"
-              className="bg-customRed font-semibold text-white  bg-gradient-to-t from-[#2E4F4F] to-[#2C3333] w-[50%] py-2 rounded-full hover:text-slate-400 transition-colors duration-100 my-3"
+              className="bg-customRed font-semibold text-white  bg-gradient-to-bl from-[#235d5d] to-[#5c7474]  w-[50%] py-2 rounded-full hover:text-slate-400 transition-colors duration-100 my-3"
             >
               {loader ? "Loading..." : "Register"}
             </button>
           </div>
 
-          <p className="text-center text-sm text-slate-700 mt-6">
+          <p className="text-center text-sm text-slate-300 mt-2 ">
             Already have an account?
             <Link
-              className="font-semibold underline hover:text-black"
+              className="font-semibold underline "
               to="/login"
             >
-              <span className="text-btnColor "> Login</span>
+              <span className="text-[#76ABAE] font-bold hover:text-white "> Login</span>
             </Link>
           </p>
         </form>

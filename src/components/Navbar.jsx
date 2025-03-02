@@ -14,7 +14,7 @@ const Navbar = () => {
     <div className={"w-full h-16 z-50 flex sticky top-0 bg-[#2c4850]"}>
       <div className="w-[55%] sm:px-10 sm:py-2 px-6 py-2">
         <Link to="/">
-          <h1 className="font-bold text-3xl text-white italic">ShortLy</h1>
+          <h1 className="font-bold text-3xl text-white italic">Linklytics</h1>
         </Link>
       </div>
       <div

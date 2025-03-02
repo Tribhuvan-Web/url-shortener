@@ -47,14 +47,14 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-64px)] bg-gradient-to-t from-[#31363F]  to-[#76ABAE] flex justify-center items-center">
-      <div className="sm:w-[700px] w-[600] sm:flex shadow-custom ">
+    <div className="min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900  flex justify-center items-center">
+      <div className="sm:w-[700px] w-[600] sm:flex shadow-2xl shadow-[#2c4850]  rounded-lg">
         <form
           onSubmit={handleSubmit(LoginHandler)}
-          className="sm:w-[350px] w-[350px] py-8 sm:px-8 px-4 rounded-md"
+          className="sm:w-[350px] w-[350px] py-8 sm:px-8 px-4 rounded-md "
         >
-          <h1 className="text-center  font-serif text-white font-bold lg:text-2xl text-xl">
-            LogIn Page
+          <h1 className="text-center  font-serif text-[#76ABAE] font-bold lg:text-2xl text-xl">
+            User Login
           </h1>
 
           <hr className="mt-2 mb-5 " />
@@ -74,6 +74,7 @@ const LoginPage = () => {
               placeholder="Type your username"
               register={register}
               errors={errors}
+              className={"text-white"}
             />
             <div className="flex items-center gap-2">
               <img src="../src/assets/lock.png" alt="" className="w-5 " />
@@ -90,25 +91,30 @@ const LoginPage = () => {
               register={register}
               min={6}
               errors={errors}
+              className={"text-white"}
+            
             />
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-4">
             <button
               disabled={loader}
               type="submit"
-              className="bg-customRed font-semibold text-white bg-gradient-to-t from-[#2E4F4F] to-[#2C3333] w-[50%]  py-2 hover:text-slate-400 transition-colors duration-100 rounded-full my-3"
+              className="bg-customRed font-semibold text-white bg-gradient-to-bl from-[#235d5d] to-[#5c7474] w-[50%]  py-2 hover:text-slate-400 transition-colors duration-100 rounded-full my-3"
             >
               {loader ? "Loading..." : "LogIn"}
             </button>
           </div>
 
-          <p className="text-center text-sm text-slate-300 mt-6">
-            Don't have an account? 
+          <p className="text-center text-sm text-slate-300 mt-4">
+            Don't have an account?
             <Link
-              className="font-semibold underline hover:text-black"
+              className="font-bold  underline"
               to="/register"
             >
-              <span className="font-semibold text-blue-500 hover:font-bold"> Signup</span>
+              <span className="font-bold text-[#76ABAE] hover:text-white">
+                {" "}
+                Signup
+              </span>
             </Link>
           </p>
         </form>

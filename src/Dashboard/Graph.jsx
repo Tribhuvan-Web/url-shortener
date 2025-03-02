@@ -36,9 +36,9 @@ const Graph = ({ graphData }) => {
             ? userPerDaya
             : [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1],
         backgroundColor:
-          graphData.length > 0 ? "#3b82f6" : rgba(54, 162, 235, 0.1),
-        borderColor: "#1D2327",
-        pointBorderColor: "red",
+          graphData.length > 0 ? "#76ABAE" : rgba(54, 162, 235, 0.1),
+        borderColor: "#76ABAE",
+        pointBorderColor: "blue",
         fill: true,
         tension: 0.4,
         barThickness: 20,
@@ -98,7 +98,7 @@ const Graph = ({ graphData }) => {
     },
   };
 
-  return <Bar className=" w-full" data={data} options={options}></Bar>;
+  return <Bar className=" w-full text-white" data={data} options={options}></Bar>;
 };
 
 export default Graph;

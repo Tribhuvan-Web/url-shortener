@@ -35,8 +35,7 @@ const RegisterPage = () => {
       navigate("/login");
       toast.success("Registration successful!");
     } catch (error) {
-      console.log(error);
-      toast.error("Registration failure");
+      toast.error(error.response.data);
     } finally {
       setLoader(false);
     }
@@ -120,11 +119,11 @@ const RegisterPage = () => {
 
           <p className="text-center text-sm text-slate-300 mt-2 ">
             Already have an account?
-            <Link
-              className="font-semibold underline "
-              to="/login"
-            >
-              <span className="text-[#76ABAE] font-bold hover:text-white "> Login</span>
+            <Link className="font-semibold underline " to="/login">
+              <span className="text-[#76ABAE] font-bold hover:text-white ">
+                {" "}
+                Login
+              </span>
             </Link>
           </p>
         </form>

@@ -32,7 +32,7 @@ const LoginPage = () => {
     try {
       const { data: response } = await api.post("/api/auth/public/login", data);
       //Store the token in local storage
-      console.log(response.token);
+      // console.log(response.token);
       setToken(response.token);
       localStorage.setItem("JWT_TOKEN", JSON.stringify(response.token));
       toast.success("LoginPage successful!");

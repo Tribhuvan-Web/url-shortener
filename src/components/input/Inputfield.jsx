@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Inputfield = () => {
+const Inputfield = ({ onValidUrl = null}) => {
+  console.log(onValidUrl);
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); 
-
+  const navigate = useNavigate();
 
   const validateUrl = (url) => {
-    const regex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-])\/?$/;
+    const regex = /^(https?:\/\/)?([\da-z.-]+)\./;
     return regex.test(url);
   };
 
@@ -16,7 +16,9 @@ const Inputfield = () => {
     e.preventDefault();
     if (validateUrl(url)) {
       setError("");
-      navigate("/register");
+      if (onValidUrl) {
+        onValidUrl();
+      }
     } else {
       setError("Please enter a valid URL");
     }
@@ -39,7 +41,9 @@ const Inputfield = () => {
           placeholder="https://example.com/long-url"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          className={`w-full p-2 rounded-lg ${error?"mb-1":"mb-4"} border border-gray-300 text-black focus:outline outline-2  outline-blue-500`}
+          className={`w-full p-2 rounded-lg ${
+            error ? "mb-1" : "mb-4"
+          } border border-gray-300 text-black focus:outline outline-2  outline-blue-500`}
         />
         {error && <p className="text-red-600 mb-2">{error}</p>}
         <button

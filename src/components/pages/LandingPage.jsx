@@ -9,7 +9,7 @@ const LandingPage = () => {
 
   const { token } = useStoreContext();
 
-  console.log("TOKEN FROM LANDING PAGE", token);
+  // console.log("TOKEN FROM LANDING PAGE", token);
 
   const handleValidUrl = () => {
     navigate("/register");

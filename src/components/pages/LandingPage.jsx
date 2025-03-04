@@ -9,11 +9,9 @@ const LandingPage = () => {
 
   const { token } = useStoreContext();
 
-  // console.log("TOKEN FROM LANDING PAGE", token);
-
   const handleValidUrl = () => {
     navigate("/register");
-  }
+  };
 
   let desc =
     "Generate short, memorable links with ease using our URL shortener service. Our tool is free to use. Try it out now!";

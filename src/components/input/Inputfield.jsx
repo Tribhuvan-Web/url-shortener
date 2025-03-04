@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Inputfield = ({ onValidUrl = null}) => {
-  console.log(onValidUrl);
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();

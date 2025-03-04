@@ -31,16 +31,14 @@ const LoginPage = () => {
     setLoader(true);
     try {
       const { data: response } = await api.post("/api/auth/public/login", data);
-      //Store the token in local storage
-      // console.log(response.token);
       setToken(response.token);
       localStorage.setItem("JWT_TOKEN", JSON.stringify(response.token));
-      toast.success("LoginPage successful!");
+      toast.success("Login successful!");
       reset();
       navigate("/dashboard");
     } catch (error) {
       console.log(error);
-      toast.error("LoginPage failed");
+      toast.error(error.response.data);
     } finally {
       setLoader(false);
     }
@@ -92,7 +90,6 @@ const LoginPage = () => {
               min={6}
               errors={errors}
               className={"text-white"}
-            
             />
           </div>
           <div className="flex justify-center mt-4">
@@ -107,10 +104,7 @@ const LoginPage = () => {
 
           <p className="text-center text-sm text-slate-300 mt-4">
             Don't have an account?
-            <Link
-              className="font-bold  underline"
-              to="/register"
-            >
+            <Link className="font-bold  underline" to="/register">
               <span className="font-bold text-[#76ABAE] hover:text-white">
                 {" "}
                 Signup

@@ -4,16 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useStoreContext } from "../../contextApi/ContextApi";
 import Inputfield from "../input/Inputfield";
 
-const LandingPage = () => {
+const HomePage = () => {
   const navigate = useNavigate();
 
   const { token } = useStoreContext();
 
-  // console.log("TOKEN FROM LANDING PAGE", token);
-
-  const handleValidUrl = () => {
-    navigate("/register");
-  }
+  console.log("TOKEN FROM LANDING PAGE", token);
 
   let desc =
     "Generate short, memorable links with ease using our URL shortener service. Our tool is free to use. Try it out now!";
@@ -41,7 +37,7 @@ const LandingPage = () => {
               seconds. Simplify your sharing experience with Shortly today.
             </p>
             <div className="flex items-center my-16 pt-2 gap-3 ">
-              <Inputfield onValidUrl={handleValidUrl} />
+              <Inputfield />
             </div>
           </div>
         </div>
@@ -83,4 +79,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default HomePage;

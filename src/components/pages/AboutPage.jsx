@@ -6,7 +6,7 @@ const AboutPage = () => {
          
           <div className="lg:w-[60%] p-4 w-full h-full shadow-xl shadow-[#2c4850] flex flex-col justify-center items-center sm:px-6 px-4 rounded-xl">
             <h2 className="text-4xl text-center text-[#76ABAE]  font-bold px-4 py-1 md:mt-0 mt-10">
-              About Linklytics
+              About Shortly
             </h2>
             <p className="md:text-3xl text-2xl text-center  dark:text-gray-200 font-bold my-5">
               Welcome to our URL Shortener, powered by Spring Boot.

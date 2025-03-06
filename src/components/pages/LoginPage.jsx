@@ -35,9 +35,8 @@ const LoginPage = () => {
       localStorage.setItem("JWT_TOKEN", JSON.stringify(response.token));
       toast.success("Login successful!");
       reset();
-      navigate("/dashboard");
+      navigate("/home");
     } catch (error) {
-      console.log(error);
       toast.error(error.response.data);
     } finally {
       setLoader(false);
@@ -46,7 +45,7 @@ const LoginPage = () => {
 
   return (
     <div className="min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900  flex justify-center items-center">
-      <div className="sm:w-[700px] w-[600] sm:flex shadow-2xl shadow-[#2c4850]  rounded-lg">
+      <div className="sm:w-[700px]  sm:flex shadow-2xl shadow-[#2c4850]  rounded-lg">
         <form
           onSubmit={handleSubmit(LoginHandler)}
           className="sm:w-[350px] w-[350px] py-8 sm:px-8 px-4 rounded-md "

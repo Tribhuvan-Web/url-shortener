@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Graph from "./Graph";
 import { useStoreContext } from "../contextApi/ContextApi";
 import { useFetchMyShortUrls, useFetchTotalClicks } from "../hooks/useQuery";
 import ShortenPopUp from "../components/shortenComponent/ShortenPopUp";
 import { FaLink } from "react-icons/fa";
 import ShortenUrlList from "../components/shortenComponent/ShortenUrlList";
+import Loader from "../Loader";
+import { useNavigate } from "react-router-dom";
 
 const DashboardLayout = () => {
   const { token } = useStoreContext();
+
+  const navigate = useNavigate();
 
   const [shortenPopUp, setShortenPopUp] = React.useState(false);
 
@@ -22,12 +26,14 @@ const DashboardLayout = () => {
     refetch,
   } = useFetchMyShortUrls(token, onError);
 
-  function onError() {}
-
+  function onError() {
+    navigate("/error");
+  }
+  
   return (
-    <div className="lg:px-14 sm:px-8 px-4 min-h-[calc(100vh-64px)] ">
+    <div className="lg:px-14 sm:px-8 px-4 min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900">
       {loader ? (
-        <div className="text-center py-5">Loading...</div>
+        <Loader />
       ) : (
         <div className="lg:w-[90%] w-full mx-auto py-16">
           <div className="h-96 relative text-black">
@@ -45,7 +51,7 @@ const DashboardLayout = () => {
             >
               Create a new short url
             </button>
-          </div> 
+          </div>
 
           <div>
             {!isLoading && myShortenUrls.length === 0 ? (

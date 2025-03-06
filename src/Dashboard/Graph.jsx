@@ -1,24 +1,22 @@
 import React from "react";
-import { Line } from "react-chartjs-2"; 
+import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
+  BarElement,
   CategoryScale,
   LinearScale,
   Legend,
   Tooltip,
   Filler,
-  PointElement,
-  LineElement,
 } from "chart.js";
 
 ChartJS.register(
+  BarElement,
+  Tooltip,
   CategoryScale,
   LinearScale,
   Legend,
-  Tooltip,
-  Filler,
-  PointElement,
-  LineElement
+  Filler
 );
 
 const Graph = ({ graphData }) => {
@@ -27,34 +25,25 @@ const Graph = ({ graphData }) => {
 
   const data = {
     labels:
-      graphData?.length > 0
+      graphData.length > 0
         ? labels
         : ["", "", "", "", "", "", "", "", "", "", "", "", "", ""],
     datasets: [
       {
         label: "Total Clicks",
         data:
-          graphData?.length > 0
+          graphData.length > 0
             ? userPerDaya
-            : [1, 3, 1, 1,13, 1, 1, 5, 1, 1, 11, 1, 1],
-        backgroundColor: (context) => {
-          const ctx = context.chart.ctx;
-          const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-          gradient.addColorStop(
-            0,
-            graphData?.length > 0 ? "#76ABAE80" : "rgba(54, 162, 235, 0.1)"
-          );
-          gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-          return gradient;
-        },
-        borderColor: "#76ABAE",
-        pointBackgroundColor: "#76ABAE",
-        pointBorderColor: "#76ABAE",
+            : [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1],
+        backgroundColor:
+          graphData.length > 0 ? "#76ABAE" : "rgba(118, 171, 174, 0.1)", // Light teal
+        borderColor: "#2c4850", // Dark teal
+        pointBorderColor: "#2c4850", // Dark teal
         fill: true,
         tension: 0.4,
-        borderWidth: 2,
-        pointRadius: 3,
-        pointHoverRadius: 5,
+        barThickness: 20,
+        categoryPercentage: 1.5,
+        barPercentage: 1.5,
       },
     ],
   };
@@ -65,16 +54,27 @@ const Graph = ({ graphData }) => {
     plugins: {
       legend: {
         display: true,
+        labels: {
+          color: "#ffffff", // Dark teal
+          font: {
+            size: 14,
+            weight: "bold",
+          },
+        },
       },
     },
     scales: {
       y: {
         beginAtZero: true,
         grid: {
-          color: "rgba(255, 255, 255, 0.1)",
+          color: "rgba(255, 255, 255, 0.1)", // Dark teal with opacity
         },
         ticks: {
-          color: "#000",
+          color: "#eff4f6", // Dark teal
+          font: {
+            size: 12,
+            weight: "bold",
+          },
           callback: function (value) {
             if (Number.isInteger(value)) {
               return value.toString();
@@ -85,26 +85,41 @@ const Graph = ({ graphData }) => {
         title: {
           display: true,
           text: "Number Of Clicks",
-          color: "#000",
+          color: "#ffffff", // Dark teal
+          font: {
+            family: "Arial",
+            size: 16,
+            weight: "bold",
+          },
         },
       },
       x: {
+        beginAtZero: true,
         grid: {
-          color: "rgba(255, 255, 255, 0.1)",
+          color: "rgba(255, 255, 255, 0.1)", // Dark teal with opacity
         },
         ticks: {
-          color: "#000",
+          color: "#ffffff", // Dark teal
+          font: {
+            size: 12,
+            weight: "bold",
+          },
         },
         title: {
           display: true,
           text: "Date",
-          color: "#000",
+          color: "white", // Dark teal
+          font: {
+            family: "Arial",
+            size: 16,
+            weight: "bold",
+          },
         },
       },
     },
   };
 
-  return <Line className="w-full" data={data} options={options} />;
+  return <Bar className="w-full bg-[#21363c] rounded-lg shadow-xl shadow-[#2c4850]"  data={data} options={options}></Bar>;
 };
 
 export default Graph;

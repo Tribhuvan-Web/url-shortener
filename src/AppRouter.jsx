@@ -8,21 +8,74 @@ import RegisterPage from "./components/pages/RegisterPage";
 import { Toaster } from "react-hot-toast";
 import Login from "./components/pages/LoginPage";
 import DashboardLayout from "./Dashboard/DashboardLayout";
-
 import ShortenUrlPage from "./components/ShortenUrlPage";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "./components/pages/ErrorPage";
 
 const AppRouter = () => {
+  
   return (
     <>
       <Navbar />
       <Toaster position="bottom-center" />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<DashboardLayout />} />
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute publicPage={true}>
+              <HomePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <PrivateRoute publicPage={true}>
+              <AboutPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <PrivateRoute publicPage={true}>
+              <ErrorPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/error"
+          element={
+            <PrivateRoute publicPage={true}>
+              <ErrorPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PrivateRoute publicPage={true}>
+              <RegisterPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PrivateRoute publicPage={true}>
+              <Login />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute publicPage={true}>
+              <DashboardLayout />
+            </PrivateRoute>
+          }
+        />
       </Routes>
       <Footer />
     </>

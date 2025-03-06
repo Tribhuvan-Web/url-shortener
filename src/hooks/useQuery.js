@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import api from "../api/api";
 
-export const useFetchTotalClicks = (token, onError) => {
+export const useFetchTotalClicks = (token) => {
   return useQuery(
     "url-totalclick",
     async () => {
@@ -25,7 +25,7 @@ export const useFetchTotalClicks = (token, onError) => {
 
         return convertToArray;
       },
-      onError,
+    
       staleTime: 5000,
     }
   );

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
-const Inputfield = ({ onValidUrl = null}) => {
+const Inputfield = ({ onValidUrl = null }) => {
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -49,8 +50,8 @@ const Inputfield = ({ onValidUrl = null}) => {
           type="submit"
           className="lg:p-2 p-1.5 sm:max-w-60 rounded-lg bg-blue-500 text-white cursor-pointer hover:bg-[#2c4850] duration-200 "
         >
-          <span className=" text-white font-bold  ">
-            Get your link for free →
+          <span className=" text-white font-bold  flex items-center justify-center gap-2 ">
+            <p>Get your link for free</p> <FaArrowRight className="mt-1 text-xl" />
           </span>
         </button>
       </form>

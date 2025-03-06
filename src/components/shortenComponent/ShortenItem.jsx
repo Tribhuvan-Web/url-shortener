@@ -4,7 +4,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import { FaExternalLinkAlt, FaRegCalendar } from "react-icons/fa";
 import { IoCopy } from "react-icons/io5";
 import { LiaCheckSolid } from "react-icons/lia";
-import { MdAnalytics, MdOutlineAdsClick } from "react-icons/md";
+import { MdAnalytics, MdDelete, MdOutlineAdsClick } from "react-icons/md";
 import api from "../../api/api";
 import { useStoreContext } from "../../contextApi/ContextApi";
 import { useNavigate } from "react-router-dom";
@@ -48,10 +48,8 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createDate }) => {
 
       setAnalyticsData(data);
       setSelectedUrl("");
-      console.log(data);
     } catch (error) {
       navigate("/error");
-      console.log(error);
     } finally {
       setLoader(false);
     }
@@ -64,7 +62,7 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createDate }) => {
   }, [selectedUrl]);
 
   return (
-    <div className="bg-white shadow-lg border border-gray-200 rounded-lg p-6 mb-6">
+    <div className="bg-slate-300 shadow-lg border border-gray-200 rounded-lg p-6 mb-6">
       <div className="flex flex-col sm:flex-row sm:justify-between items-center">
         <div className="flex-1 space-y-2">
           <div className="flex items-center gap-2">
@@ -111,7 +109,12 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createDate }) => {
             <button>Analytics</button>
             <MdAnalytics className="text-lg" />
           </div>
+       
         </div>
+      </div>
+      <div className="flex justify-end text-end">
+
+        <MdDelete className="text-2xl text-red-700 cursor-pointer"/>
       </div>
       <React.Fragment>
         <div
@@ -138,12 +141,11 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createDate }) => {
             <>
               {analyticsData.length === 0 && (
                 <div className="absolute flex flex-col  justify-center sm:items-center items-end  w-full left-0 top-0 bottom-0 right-0 m-auto">
-                  <h1 className=" text-slate-800 font-serif sm:text-2xl text-[15px] font-bold mb-1">
+                  <h1 className=" text-slate-500 font-serif sm:text-2xl text-[15px] font-bold mb-1">
                     No Data For This Time Period
                   </h1>
-                  <h3 className="sm:w-96 w-[90%] sm:ml-0 pl-6 text-center sm:text-lg text-[12px] text-slate-600 ">
-                    Share your short link to view where your engagements are
-                    coming from
+                  <h3 className="sm:w-96 w-[90%] sm:ml-0 pl-6 text-center sm:text-lg text-[12px] text-slate-200 ">
+                    Share your short link to get started
                   </h3>
                 </div>
               )}

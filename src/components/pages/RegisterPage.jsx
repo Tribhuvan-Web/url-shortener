@@ -4,10 +4,14 @@ import TextField from "../TextField";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import toast from "react-hot-toast";
+import { FaUser, FaEye, FaEyeSlash } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { RiLockPasswordFill } from "react-icons/ri";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -55,8 +59,8 @@ const RegisterPage = () => {
 
           <div className="flex flex-col text-white gap-2">
             <div className="flex items-center gap-2">
-              <img src="../src/assets/user.png" alt="" className="w-5 " />
-              <label htmlFor="username" className="text-white font-semibold">
+              <FaUser className="text-[#76ABAE] text-xl opacity-[0.5]" />
+              <label htmlFor="username" className="text-gray-50 font-semibold">
                 UserName
               </label>
             </div>
@@ -72,8 +76,8 @@ const RegisterPage = () => {
             />
 
             <div className="flex items-center gap-2">
-              <img src="../src/assets/email.png" alt="" className="w-5 " />
-              <label htmlFor="email" className="text-white font-semibold">
+              <MdEmail className="text-[#76ABAE] text-xl opacity-[0.5]" />
+              <label htmlFor="email" className="text-gray-50 font-semibold">
                 Email
               </label>
             </div>
@@ -89,22 +93,34 @@ const RegisterPage = () => {
             />
 
             <div className="flex items-center gap-2">
-              <img src="../src/assets/lock.png" alt="" className="w-5 " />
-              <label htmlFor="password" className="text-white font-semibold">
+              <RiLockPasswordFill className="text-[#76ABAE] text-xl opacity-[0.5] " />
+              <label htmlFor="password" className="text-gray-50 font-semibold">
                 Password
               </label>
             </div>
-            <TextField
-              required
-              id="password"
-              type="password"
-              message="*Password is required"
-              placeholder="Type your password"
-              register={register}
-              min={6}
-              errors={errors}
-              className={"text-white"}
-            />
+            <div className="relative w-full">
+              <TextField
+                required
+                id="password"
+                type={`${showPassword ? "text" : "password"}`}
+                message="*Password is required"
+                placeholder="Type your password"
+                register={register}
+                min={6}
+                errors={errors}
+                className={"text-white"}
+              />
+              <div
+                className="absolute right-3 top-3.5 cursor-pointer text-[#76ABAE] opacity-[0.5]"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <FaEyeSlash className="text-xl" />
+                ) : (
+                  <FaEye className="text-xl" />
+                )}
+              </div>
+            </div>
           </div>
           <div className="flex justify-center mt-4">
             <button
@@ -126,8 +142,8 @@ const RegisterPage = () => {
             </Link>
           </p>
         </form>
-        <div className="sm:flex hidden sm:w-[350px]  py-8 mt-4 sm:px-8 px-4 rounded-md">
-          <img src="../src/assets/OIP.jpg" alt="" />
+        <div className="sm:flex hidden sm:w-[350px]  py-8 mt-4 items-center sm:px-8 px-4 rounded-md">
+          <img src="../src/assets/login.png" alt="" className="h-5/6" />
         </div>
       </div>
     </div>

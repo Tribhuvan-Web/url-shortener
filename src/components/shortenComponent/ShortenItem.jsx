@@ -10,8 +10,16 @@ import { useStoreContext } from "../../contextApi/ContextApi";
 import { useNavigate } from "react-router-dom";
 import { Hourglass } from "react-loader-spinner";
 import Graph from "../../Dashboard/Graph";
+import toast from "react-hot-toast";
 
-const ShortenItem = ({ originalUrl, shortUrl, clickCount, createDate }) => {
+const ShortenItem = ({
+  id,
+  originalUrl,
+  shortUrl,
+  clickCount,
+  createDate,
+  refetch,
+}) => {
   const [isCopied, setIsCopied] = React.useState(false);
   const [analyticToggle, setAnalyticToggle] = React.useState(false);
   const [selectedUrl, setSelectedUrl] = React.useState("");
@@ -24,6 +32,25 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createDate }) => {
     /^https?:\/\//,
     ""
   );
+
+  const deleteUrlHandler = async (id) => {
+    try {
+      await api.delete(`/api/urls/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: "Bearer " + token,
+        },
+      });
+      toast.success("URL deleted successfully!");
+      await refetch();
+    } catch (error) {
+      console.error("Error deleting URL:", error);
+      navigate("/error");
+    } finally {
+      navigate("/dashboard");
+    }
+  };
 
   const analyticsHandler = (shortUrl) => {
     if (!analyticToggle) {
@@ -109,12 +136,13 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createDate }) => {
             <button>Analytics</button>
             <MdAnalytics className="text-lg" />
           </div>
-       
         </div>
       </div>
       <div className="flex justify-end text-end">
-
-        <MdDelete className="text-2xl text-red-700 cursor-pointer"/>
+        <MdDelete
+          className="text-2xl text-red-700 cursor-pointer"
+          onClick={() => deleteUrlHandler(id)}
+        />
       </div>
       <React.Fragment>
         <div

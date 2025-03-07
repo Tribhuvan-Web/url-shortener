@@ -1,7 +1,7 @@
 import React from "react";
 import ShortenItem from "./ShortenItem";
 
-const ShortenUrlList = ({ data }) => {
+const ShortenUrlList = ({ data, refetch }) => {
   if (!Array.isArray(data)) {
     return <div>No data available</div>;
   }
@@ -9,7 +9,7 @@ const ShortenUrlList = ({ data }) => {
   return (
     <div className="my-6 space-y-4">
       {data.map((item) => (
-        <ShortenItem key={item.id} {...item} />
+        <ShortenItem key={item.id} {...item} refetch={refetch} />
       ))}
     </div>
   );

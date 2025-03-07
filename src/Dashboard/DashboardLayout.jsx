@@ -64,7 +64,7 @@ const DashboardLayout = () => {
                 </div>
               </div>
             ) : (
-              <ShortenUrlList data={myShortenUrls} />
+              <ShortenUrlList data={myShortenUrls} refetch={refetch}/>
             )}
           </div>
         </div>

@@ -23,7 +23,7 @@ const AppRouter = () => {
         <Route
           path="/home"
           element={
-            <PrivateRoute publicPage={true}>
+            <PrivateRoute publicPage={false}>
               <HomePage />
             </PrivateRoute>
           }
@@ -31,7 +31,7 @@ const AppRouter = () => {
         <Route
           path="/about"
           element={
-            <PrivateRoute publicPage={true}>
+            <PrivateRoute publicPage={false}>
               <AboutPage />
             </PrivateRoute>
           }
@@ -39,7 +39,7 @@ const AppRouter = () => {
         <Route
           path="*"
           element={
-            <PrivateRoute publicPage={true}>
+            <PrivateRoute publicPage={false}>
               <ErrorPage />
             </PrivateRoute>
           }
@@ -47,7 +47,7 @@ const AppRouter = () => {
         <Route
           path="/error"
           element={
-            <PrivateRoute publicPage={true}>
+            <PrivateRoute publicPage={false}>
               <ErrorPage />
             </PrivateRoute>
           }
@@ -71,7 +71,7 @@ const AppRouter = () => {
         <Route
           path="/dashboard"
           element={
-            <PrivateRoute publicPage={true}>
+            <PrivateRoute publicPage={false}>
               <DashboardLayout />
             </PrivateRoute>
           }

@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import TextField from "../TextField";
 import { Tooltip } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
-import { data } from "autoprefixer";
 import toast from "react-hot-toast";
 import api from "../../api/api";
 

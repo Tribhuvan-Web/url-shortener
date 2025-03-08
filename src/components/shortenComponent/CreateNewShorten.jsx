@@ -45,7 +45,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
       setCreating(false);
       await refetch();
     } catch (error) {
-      toast.error("An error occurred. Please try again", {
+      toast.error("An error occurred. Please do try again", {
         position: "bottom-center",
         className: "bg-red-500 text-white",
         duration: 3000,

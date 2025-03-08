@@ -1,26 +1,58 @@
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import Modal from "@mui/material/Modal";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { Snackbar, Alert } from "@mui/material";
+import { useStoreContext } from "../../contextApi/ContextApi";
+import api from "../../api/api";
+
 
 const Inputfield = ({ onValidUrl = null }) => {
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const [shortenUrl, setShortenUrl] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+  const [copyAlert, setCopyAlert] = useState(false);
+  const { token } = useStoreContext();
 
   const validateUrl = (url) => {
-    const regex = /^(https:\/\/)?([\da-z.-]+)\./;
-    return regex.test(url);
+    try {
+      new URL(url);
+      return true;
+    } catch (error) {
+      return false;
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateUrl(url)) {
       setError("");
-      if (onValidUrl) {
-        onValidUrl();
-      }
+      onValidUrl?.();
+      await createShortUrlHandler({ originalUrl: url });
     } else {
       setError("Please enter a valid URL");
+    }
+  };
+
+  const createShortUrlHandler = async (data) => {
+    try {
+      const { data: res } = await api.post("/api/urls/shorten", data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: "Bearer " + token,
+        },
+      });
+
+      const shortUrl = `${import.meta.env.VITE_REACT_SUBDOMAIN}/${
+        res.shortUrl
+      }`;
+      setShortenUrl(shortUrl);
+      setOpenModal(true);
+    } catch (error) {
+      setError("An error occurred. Please try again");
     }
   };
 
@@ -48,14 +80,61 @@ const Inputfield = ({ onValidUrl = null }) => {
         {error && <p className="text-red-600 mb-2">{error}</p>}
         <button
           type="submit"
-          className="lg:p-2 p-1.5 sm:max-w-60 rounded-lg bg-blue-500 text-white cursor-pointer hover:bg-[#2c4850] duration-200 "
+          className="lg:p-2 p-1.5 sm:max-w-60 rounded-lg bg-blue-500 text-white cursor-pointer hover:bg-[#2c4850] duration-200 disabled:opacity-50"
         >
           <span className=" text-white font-bold  flex items-center justify-center gap-2 ">
-            <p>Get your link for free</p>{" "}
-            <FaArrowRight className="mt-1 text-xl" />
+            <p>Get your link for free</p>
           </span>
         </button>
       </form>
+
+      <Modal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        className="flex items-center justify-center p-4"
+      >
+        <div className="bg-white rounded-xl p-6 w-full max-w-md">
+          <h2 className="text-2xl font-bold mb-4 text-gray-800">
+            Your Shortened URL
+          </h2>
+          <div className="mb-6">
+            <div className="flex items-center gap-2">
+              <a
+                href={shortenUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline break-words text-sm"
+              >
+                {shortenUrl}
+              </a>
+              <CopyToClipboard
+                text={shortenUrl}
+                onCopy={() => setCopyAlert(true)}
+              >
+                <button className="text-gray-500 hover:text-gray-700 p-1 rounded hover:bg-gray-100">
+                  <ContentCopyIcon fontSize="small" />
+                </button>
+              </CopyToClipboard>
+            </div>
+          </div>
+          <button
+            onClick={() => setOpenModal(false)}
+            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Close
+          </button>
+        </div>
+      </Modal>
+
+      <Snackbar
+        open={copyAlert}
+        autoHideDuration={3000}
+        onClose={() => setCopyAlert(false)}
+      >
+        <Alert severity="success" variant="filled">
+          URL copied to clipboard!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

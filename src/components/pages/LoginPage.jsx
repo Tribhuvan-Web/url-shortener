@@ -97,7 +97,11 @@ const LoginPage = () => {
                 className="absolute right-3 top-3.5 cursor-pointer text-[#76ABAE] opacity-[0.5]"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <FaEyeSlash className="text-xl" /> : <FaEye  className="text-xl" />}
+                {showPassword ? (
+                  <FaEyeSlash className="text-xl" />
+                ) : (
+                  <FaEye className="text-xl" />
+                )}
               </div>
             </div>
           </div>
@@ -113,7 +117,7 @@ const LoginPage = () => {
           </div>
 
           <p className="text-center text-sm text-slate-300 mt-4">
-            Don't have an account?
+            Don't have an account ?{" "}
             <Link className="font-bold  underline" to="/register">
               <span className="font-bold text-[#76ABAE] hover:text-white">
                 Signup

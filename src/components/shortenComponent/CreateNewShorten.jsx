@@ -6,11 +6,13 @@ import { Tooltip } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
 import toast from "react-hot-toast";
 import api from "../../api/api";
+import ShowShortenUrl from "./ShowShortenUrl";
 
 const CreateNewShorten = ({ setOpen, refetch }) => {
   const { token } = useStoreContext();
-
+  const [creating, setCreating] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [shortenUrl, setShortenUrl] = useState("");
 
   const {
     register,
@@ -35,20 +37,13 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
         },
       });
 
-      const shortenUrl = `${import.meta.env.VITE_REACT_SUBDOMAIN}/${
+      const shortUrl = `${import.meta.env.VITE_REACT_SUBDOMAIN}/${
         res.shortUrl
       }`;
-      navigator.clipboard.writeText(shortenUrl).then(() => {
-        toast.success("Short URL copied to clipboard", {
-          position: "bottom-center",
-          className: "bg-green-500 text-white",
-          duration: 3000,
-        });
-      });
 
+      setShortenUrl(shortUrl);
+      setCreating(false);
       await refetch();
-      reset();
-      setOpen(false);
     } catch (error) {
       toast.error("An error occurred. Please try again", {
         position: "bottom-center",
@@ -82,15 +77,18 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
             errors={errors}
           />
         </div>
-
-        <button
-          className={`bg-custom-gradient font-semibold text-white w-full py-3 rounded-lg mt-5 transition-all duration-300 ${
-            loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
-          }`}
-          disabled={loading}
-        >
-          {loading ? "Creating..." : "Create"}
-        </button>
+        {shortenUrl ? (
+          <ShowShortenUrl shortenUrl={shortenUrl} />
+        ) : (
+          <button
+            className={`bg-custom-gradient font-semibold text-white w-full py-3 rounded-lg mt-5 transition-all duration-300 ${
+              creating ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
+            }`}
+            disabled={creating}
+          >
+            {creating ? "Creating..." : "Create"}
+          </button>
+        )}
 
         {!loading && (
           <Tooltip title="Close">

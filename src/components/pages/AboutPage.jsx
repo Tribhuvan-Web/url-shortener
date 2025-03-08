@@ -1,7 +1,6 @@
 import { MdOutlineEmojiEmotions } from "react-icons/md";
-import { inView, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
-import { HALF_PI } from "chart.js/helpers";
 import ReadMoreButton from "../ReadMoreButton";
 import ViewLessButton from "../ViewLessButton";
 
@@ -38,12 +37,6 @@ const AboutPage = () => {
               into the text box, click the "Shorten" button, and voilà! You will
               receive a shortened URL that is ready to be shared with the world.
             </p>
-            {/* <button
-              className="lg:mt-10 mt-6 lg:px-6 px-4 lg:py-4  py-2 bg-gradient-to-t from-[#235d5d] to-[#5c7474] rounded-full lg:text-xl text-lg text-white font-semibold"
-              onClick={viewMore}
-            >
-              Read More
-            </button> */}
           </div>
         </div>
       </div>

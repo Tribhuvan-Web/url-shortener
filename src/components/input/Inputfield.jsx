@@ -8,7 +8,7 @@ const Inputfield = ({ onValidUrl = null }) => {
   const navigate = useNavigate();
 
   const validateUrl = (url) => {
-    const regex = /^(https?:\/\/)?([\da-z.-]+)\./;
+    const regex = /^(https:\/\/)?([\da-z.-]+)\./;
     return regex.test(url);
   };
 

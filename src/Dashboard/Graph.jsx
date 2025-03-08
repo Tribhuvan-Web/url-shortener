@@ -36,9 +36,9 @@ const Graph = ({ graphData }) => {
             ? userPerDaya
             : [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1],
         backgroundColor:
-          graphData.length > 0 ? "#76ABAE" : "rgba(118, 171, 174, 0.1)", // Light teal
-        borderColor: "#2c4850", // Dark teal
-        pointBorderColor: "#2c4850", // Dark teal
+          graphData.length > 0 ? "#76ABAE" : "rgba(118, 171, 174, 0.1)",
+        borderColor: "#2c4850",
+        pointBorderColor: "#2c4850",
         fill: true,
         tension: 0.4,
         barThickness: 20,
@@ -55,7 +55,7 @@ const Graph = ({ graphData }) => {
       legend: {
         display: true,
         labels: {
-          color: "#ffffff", // Dark teal
+          color: "#d3d1d1 ",
           font: {
             size: 14,
             weight: "bold",
@@ -67,10 +67,10 @@ const Graph = ({ graphData }) => {
       y: {
         beginAtZero: true,
         grid: {
-          color: "rgba(255, 255, 255, 0.1)", // Dark teal with opacity
+          color: "rgba(255, 255, 255, 0.1)",
         },
         ticks: {
-          color: "#eff4f6", // Dark teal
+          color: "rgb(100 120 139 )",
           font: {
             size: 12,
             weight: "bold",
@@ -85,7 +85,7 @@ const Graph = ({ graphData }) => {
         title: {
           display: true,
           text: "Number Of Clicks",
-          color: "#ffffff", // Dark teal
+          color: "rgb(100 116 139 ",
           font: {
             family: "Arial",
             size: 16,
@@ -96,10 +96,10 @@ const Graph = ({ graphData }) => {
       x: {
         beginAtZero: true,
         grid: {
-          color: "rgba(255, 255, 255, 0.1)", // Dark teal with opacity
+          color: "rgba(255, 255, 255, 0.1)", 
         },
         ticks: {
-          color: "#ffffff", // Dark teal
+          color: "rgb(100 116 139 ", 
           font: {
             size: 12,
             weight: "bold",
@@ -108,7 +108,7 @@ const Graph = ({ graphData }) => {
         title: {
           display: true,
           text: "Date",
-          color: "white", // Dark teal
+          color: "rgb(100 116 139 ", 
           font: {
             family: "Arial",
             size: 16,
@@ -119,7 +119,13 @@ const Graph = ({ graphData }) => {
     },
   };
 
-  return <Bar className="w-full bg-[#21363c] rounded-lg shadow-xl shadow-[#2c4850]"  data={data} options={options}></Bar>;
+  return (
+    <Bar
+      className="w-full bg-[#21363c] rounded-lg shadow-xl shadow-[#2c4850]"
+      data={data}
+      options={options}
+    ></Bar>
+  );
 };
 
 export default Graph;

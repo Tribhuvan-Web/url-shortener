@@ -6,44 +6,52 @@ import ReadMoreButton from "../ReadMoreButton";
 import ViewLessButton from "../ViewLessButton";
 
 const AboutPage = () => {
-  const [isInView, setIsInView] = useState(false);
+  const [isInView1, setIsInView1] = useState(false);
+  const [isInView2, setIsInView2] = useState(false);
 
-  const toggleViewMore = () => {
-    setIsInView((prev) => !prev);
+  const toggleViewMore1 = () => {
+    setIsInView1((prev) => !prev);
+  };
+  const toggleViewMore2 = () => {
+    setIsInView2((prev) => !prev);
   };
 
   return (
     <div className="w-full  m-auto flex flex-col items-center justify-cetner sm:py-20 py-8 bg-gray-50 dark:bg-gray-900">
       <div className=" h-full flex flex-col justify-center items-center sm:px-4 px-2 ">
         <div className="w-full flex flex-col lg:gap-10 lg:flex-row items-center justify-center p ">
-          <div className=" p-4 w-full h-full shadow-xl shadow-[#2c4850] flex flex-col justify-center items-center sm:px-6 px-4 py-10 rounded-xl">
-            <motion.p
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl text-center text-[#76ABAE]  font-bold px-4 py-1 md:mt-0 mt-10"
-            >
-              About Shortly
-            </motion.p>
-            <p className="md:text-3xl text-2xl text-center  dark:text-gray-200 font-bold my-5">
-              Welcome to our URL Shortener, powered by Spring Boot.
-            </p>
-            <p className="md:text-xl sm:text-lg text-base mt-2 text-justify sm:px-14 px-2 dark:text-gray-300">
-              Our platform is designed to provide you with the most efficient
-              and user-friendly experience possible. Simply paste your long URL
-              into the text box, click the "Shorten" button, and voilà! You will
-              receive a shortened URL that is ready to be shared with the world.
-            </p>
-            {/* <button
-              className="lg:mt-10 mt-6 lg:px-6 px-4 lg:py-4  py-2 bg-gradient-to-t from-[#235d5d] to-[#5c7474] rounded-full lg:text-xl text-lg text-white font-semibold"
-              onClick={viewMore}
-            >
-              Read More
-            </button> */}
+          <div className=" p-4 w-full h-full shadow-xl shadow-[#2c4850] flex sm:flex-row flex-col justify-center   items-center sm:px-6  py-10 rounded-xl">
+            <div className="flex flex-col sm:w-[75%] items-center mb-8">
+              <motion.p
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-4xl text-center text-[#76ABAE]  font-bold py-1 md:mt-0 mt-10"
+              >
+                About Shortly
+              </motion.p>
+              <p className="md:text-3xl text-2xl text-center  dark:text-gray-200 font-bold my-5">
+                Welcome to our URL Shortener, powered by Spring Boot.
+              </p>
+              <p className="md:text-xl sm:text-lg text-base mt-2 text-justify sm:px-14  dark:text-gray-300">
+                Our platform is designed to provide you with the most efficient
+                and user-friendly experience possible. Simply paste your long
+                URL into the text box, click the "Shorten" button, and voilà!
+                You will receive a shortened URL that is ready to be shared with
+                the world.
+              </p>
+            </div>
+            <div className="sm:w-[25%] items-center  flex justify-center ">
+              <img
+                src="src/assets/AboutLogo.png"
+                alt="Landing Page Logo"
+                className=" h-2/4 object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -87,9 +95,9 @@ const AboutPage = () => {
           of clicking. A shortened URL has a higher chance of becoming a
           permalink. (A permalink is an URL that is intended to not change in
           the future).
-          {isInView ? "" : <ReadMoreButton onClick={toggleViewMore} />}
+          {isInView1 ? "" : <ReadMoreButton onClick={toggleViewMore1} />}
         </p>
-        {isInView && (
+        {isInView1 && (
           <>
             <p className="dark:text-gray-300 mb-4">
               Shortened URLs are more aesthetically pleasing. Shortening a URL
@@ -107,7 +115,7 @@ const AboutPage = () => {
               service at Shortly delivers a quick, easy and free way to generate
               a shorter URL for your site. The process for URL shortening is
               reliable and secure, so you can safely generate a better URL.
-              {isInView ? <ViewLessButton onClick={toggleViewMore} /> : ""}
+              {isInView1 ? <ViewLessButton onClick={toggleViewMore1} /> : ""}
             </p>
           </>
         )}
@@ -142,9 +150,9 @@ const AboutPage = () => {
           Growing your site will be much more comfortable with a shortened URL.
           As you add more pages of content, a shortened URL makes it easier to
           link each subsequent page without creating an unnecessarily long URL.
-          {isInView ? "" : <ReadMoreButton onClick={toggleViewMore} />}
+          {isInView2 ? "" : <ReadMoreButton onClick={toggleViewMore2} />}
         </p>
-        {isInView && (
+        {isInView2 && (
           <>
             <p className="dark:text-gray-300 mb-4">
               A shortened URL also conveys professionalism. Deciding which link
@@ -166,7 +174,7 @@ const AboutPage = () => {
               to create an attractive, well-ranked and respectable website. URL
               shortners, like Shortly, are one more tool in your box to help you
               build the website you need.
-              {isInView ? <ViewLessButton onClick={toggleViewMore} /> : ""}
+              {isInView2 ? <ViewLessButton onClick={toggleViewMore2} /> : ""}
             </p>
           </>
         )}

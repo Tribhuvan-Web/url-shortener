@@ -25,7 +25,7 @@ const Inputfield = ({ onValidUrl = null }) => {
   };
 
   return (
-    <div className="p-8 sm:w-9/12  mx-auto border-solid border-white border-2  shadow-xl shadow-[#2c4850] rounded-3xl">
+    <div className="p-8 sm:w-9/12  mx-auto bg-gray-50 dark:bg-gray-900 border-solid border-white border-2 static z-20 shadow-xl shadow-[#2c4850] rounded-3xl">
       <h1 className="text-3xl text-white font-bold mb-2">
         Shorten a long link
       </h1>

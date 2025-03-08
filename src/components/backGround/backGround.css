@@ -1,0 +1,46 @@
+.shooting-stars {
+  position: fixed;
+  top: 0;
+  left: 0; 
+  width: 100%;
+  height: 100%;
+  overflow: hidden;  
+  pointer-events: none;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  top: var(--star-top-offset, 0);
+  left: var(--star-left-offset, 0);
+  width: var(--star-width, 1px); /* Increased width */
+  height: var(--star-height, 50px); /* Increased height */
+  background: linear-gradient(45deg, #4d5858, transparent);
+  animation: fall var(--fall-duration) linear infinite ; /* Adjusted duration */
+  transform: translate3d(0, 0, 0) rotate(45deg);
+  filter: drop-shadow(0 0 2px #d0f6f2); /* Increased brightness */
+}
+
+@keyframes fall {
+  from {
+    transform: translate3d(0, 0, 0) rotate(45deg);
+    opacity: 0.6;
+  }
+  to {
+    transform: translate3d(-500px, 1000px, 0) rotate(45deg);
+    opacity: 0.6;
+  }
+}
+
+/* Randomize shooting star properties */
+.star:nth-child(even) {
+  --fall-duration: 10s; /* Adjusted duration */
+  --star-top-offset: calc(100% * var(--random-factor));
+  --star-left-offset: calc(100% * var(--random-factor));
+}
+
+.star:nth-child(odd) {
+  --fall-duration: 14s;
+  --star-top-offset: calc(100% * var(--random-factor));
+  --star-left-offset: calc(100% * var(--random-factor));
+}

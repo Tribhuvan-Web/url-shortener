@@ -2,8 +2,8 @@ import Card from "../Card";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useStoreContext } from "../../contextApi/ContextApi";
-import Inputfield from "../input/Inputfield";
-
+import { Link } from "react-router-dom";
+import BackGround from "../backGround/backGround";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -18,29 +18,42 @@ const LandingPage = () => {
     "Generate short, memorable links with ease using our URL shortener service. Our tool is free to use. Try it out now!";
   return (
     <>
-      <div className="min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900 lg:px-14 sm:px-8 px-4 py-20 text-white">
-        <div className="lg:flex-row flex-col  lg:gap-10 gap-8 flex justify-between items-center">
-          <div className=" flex-1 ">
-            <motion.h1
-              initial={{ opacity: 0, y: -80 }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="font-bold font-roboto mx-auto sm:text-center text-[#76ABAE]  md:text-4xl sm:text-4xl text-3xl  md:leading-[55px] sm:leading-[45px] leading-10 lg:w-full md:w-[70%] w-full"
-            >
-              Shortly Simplifies URL Shortening For Efficient Sharing.
-            </motion.h1>
-            <p className=" md:text-xl sm:text-lg text-base my-6 mx-auto sm:text-center dark:text-gray-300 ">
-              Shortly streamlines the process of URL shortening, making sharing
-              links effortless and efficient. With its user-friendly interface,
-              Shortly allows you to generate concise, easy-to-share URLs in
-              seconds. Simplify your sharing experience with Shortly today.
-            </p>
-            <div className="flex items-center my-16 pt-2 gap-3 ">
-              <Inputfield onValidUrl={handleValidUrl} />
+      <div className="min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900 lg:px-14 sm:px-8 px-4  text-white">
+      <BackGround />
+        <div className="lg:flex-row flex-col px-5 lg:gap-10 gap-8 flex sm:py-2 py-20 justify-between items-center">
+          <div className="  flex sm:flex-row flex-col items-center sm:justify-between sm:mt-14 mb-10 lg:gap-x-80 mx-auto">
+            <div className="flex flex-col items-start justify-start sm:w-[50%] ">
+              <motion.h1
+                initial={{ opacity: 0, y: -80 }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="font-bold font-roboto   text-[#76ABAE]  md:text-4xl sm:text-4xl text-3xl  md:leading-[55px] sm:leading-[45px] leading-10 lg:w-full md:w-[70%] w-full"
+              >
+                Your Ultimate URL Shortening Tool
+              </motion.h1>
+              <p className=" text-md text-base my-2  dark:text-gray-300 ">
+                Quickly transform long, cluttered links into sleek, shareable
+                URLs with Shortly. Simple, efficient,
+                and designed to enhance your digital experience."
+              </p>
+              {!token && (
+                <Link to={"/register"} >
+                  <li className="bg-[#76ABAE] hover:bg-white hover:text-[#31363F] opacity-[0.8] list-none  text-white  cursor-pointer  font-semibold  px-16 py-2 mt-8 rounded-full transition-all duration-150">
+                    SignUp
+                  </li>
+                </Link>
+              )}
+            </div>
+            <div className="sm:w-[35%] w-full sm:py-6 py-16 justify-end items-center z-10 ">
+              <img
+                src="src/assets/bgimg.png"
+                alt="Landing Page Logo"
+                className=" object-cover "
+              />
             </div>
           </div>
         </div>
@@ -77,7 +90,6 @@ const LandingPage = () => {
             />
           </div>
         </div>
-      
       </div>
     </>
   );

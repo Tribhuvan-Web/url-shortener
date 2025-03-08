@@ -84,14 +84,7 @@ const Navbar = () => {
           className={`flex sm:flex-row flex-col gap-4 sm:mt-0 mt-4
           ${navbarOpen ? "fixed bottom-4" : ""} sm:static`}
         >
-          {!token && (
-            <Link to={"/register"} onClick={closeNavbar}>
-              <li className="bg-[#76ABAE] hover:bg-white hover:text-[#31363F] opacity-[0.8] list-none  text-white  cursor-pointer text-center font-semibold  px-3 py-2  rounded-md transition-all duration-150"
-              >
-                SignUp
-              </li>
-            </Link>
-          )}
+   
           {token ? (
             <button
               className="bg-[#76ABAE] hover:bg-white hover:text-[#31363F] opacity-[0.8] list-none  text-white  cursor-pointer text-center font-semibold  px-3 py-2  rounded-md transition-all duration-150"

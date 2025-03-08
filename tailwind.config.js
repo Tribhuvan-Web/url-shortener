@@ -1,4 +1,4 @@
-import { keyframes, transform } from 'motion';
+// import { keyframes, transform } from 'motion';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -6,9 +6,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "custom-gradient": "linear-gradient(to right, #3b82f6, #9333ea)", // equivalent to from-blue-500 to-purple-600
-        "custom-gradient-2": "linear-gradient(to left, #3b82f6, #f43f5e)",
-        "card-gradient": "linear-gradient(to right, #38b2ac, #4299e1)",
+        'radial-gradient': 'radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%)',
       },
 
       colors: {

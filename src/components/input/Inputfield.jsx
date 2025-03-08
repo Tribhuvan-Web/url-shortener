@@ -25,7 +25,7 @@ const Inputfield = ({ onValidUrl = null }) => {
   };
 
   return (
-    <div className="p-8 sm:w-9/12  mx-auto border-solid border-white border-2  shadow-xl shadow-[#2c4850] rounded-3xl">
+    <div className="p-8 sm:w-9/12  mx-auto bg-gray-50 dark:bg-gray-900 border-solid border-white border-2 static z-20 shadow-xl shadow-[#2c4850] rounded-3xl">
       <h1 className="text-3xl text-white font-bold mb-2">
         Shorten a long link
       </h1>
@@ -33,7 +33,7 @@ const Inputfield = ({ onValidUrl = null }) => {
 
       <form onSubmit={handleSubmit} className="flex flex-col md:mt-12 ">
         <span className="py-2 font-bold text-lg ">
-          Paste your long link here
+          Type or paste your long link here
         </span>
         <input
           type="text"
@@ -51,7 +51,8 @@ const Inputfield = ({ onValidUrl = null }) => {
           className="lg:p-2 p-1.5 sm:max-w-60 rounded-lg bg-blue-500 text-white cursor-pointer hover:bg-[#2c4850] duration-200 "
         >
           <span className=" text-white font-bold  flex items-center justify-center gap-2 ">
-            <p>Get your link for free</p> <FaArrowRight className="mt-1 text-xl" />
+            <p>Get your link for free</p>{" "}
+            <FaArrowRight className="mt-1 text-xl" />
           </span>
         </button>
       </form>

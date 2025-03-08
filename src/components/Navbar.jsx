@@ -108,13 +108,6 @@ const Navbar = () => {
             navbarOpen ? "fixed bottom-4" : ""
           } sm:static`}
         >
-          {!token && (
-            <Link to={"/register"} onClick={closeNavbar}>
-              <li className="bg-[#76ABAE] hover:bg-white hover:text-[#31363F] opacity-[0.8] list-none text-white cursor-pointer text-center font-semibold px-3 py-2 rounded-md transition-all duration-150">
-                SignUp
-              </li>
-            </Link>
-          )}
           {token && (
             <div className="group relative inline-block">
               <div className="flex items-center space-x-3 cursor-pointer">
@@ -126,7 +119,7 @@ const Navbar = () => {
                 <div className="text-white">
                   <p className="font-semibold text-lg">{username}</p>
                 </div>
-                <IoMdArrowDropdown className="text-white font-black"/>
+                <IoMdArrowDropdown className="text-white font-black" />
               </div>
 
               <div className="absolute right-0 mt-3 w-64 origin-top-right scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-200">
@@ -195,10 +188,10 @@ const Navbar = () => {
           )}
           {!token && (
             <button
+              className="bg-[#76ABAE] hover:bg-white hover:text-[#31363F] opacity-[0.8] list-none  text-white  cursor-pointer text-center font-semibold  px-3 py-2  rounded-md transition-all duration-150"
               onClick={loginHandler}
-              className="bg-gradient-to-br from-[#76ABAE] to-[#5d8c8f] hover:from-[#5d8c8f] hover:to-[#76ABAE] text-white font-semibold px-6 py-2 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
             >
-              Login
+              LogIn
             </button>
           )}
         </div>

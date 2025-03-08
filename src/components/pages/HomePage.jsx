@@ -3,16 +3,18 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useStoreContext } from "../../contextApi/ContextApi";
 import Inputfield from "../input/Inputfield";
+import BackGround from "../backGround/backGround";
 
 const HomePage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const { token } = useStoreContext();
+  // const { token } = useStoreContext();
 
   return (
     <>
-      <div className="min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900 lg:px-14 sm:px-8 px-4 py-20 text-white">
-        <div className="lg:flex-row flex-col  lg:gap-10 gap-8 flex justify-between items-center">
+      <div className="min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900 lg:px-14 sm:px-8 px-4 py-20 overflow-visible text-white">
+      <BackGround />
+        <div className="lg:flex-row flex-col bg-gray-50 dark:bg-gray-900  lg:gap-10 gap-8 flex justify-between items-center">
           <div className=" flex-1 ">
             <motion.h1
               initial={{ opacity: 0, y: -80 }}
@@ -22,7 +24,7 @@ const HomePage = () => {
               }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="font-bold font-roboto mx-auto sm:text-center text-[#76ABAE]  md:text-4xl sm:text-4xl text-3xl  md:leading-[55px] sm:leading-[45px] leading-10 lg:w-full md:w-[70%] w-full"
+              className="font-bold font-roboto  mx-auto sm:text-center text-[#76ABAE]  md:text-4xl sm:text-4xl text-3xl  md:leading-[55px] sm:leading-[45px] leading-10 lg:w-full md:w-[70%] w-full"
             >
               Shortly Simplifies URL Shortening For Efficient Sharing.
             </motion.h1>
@@ -38,7 +40,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="sm:pt-12 pt-7">
-          <motion.p
+          {/* <motion.p
             initial={{ opacity: 0, y: 50 }}
             whileInView={{
               opacity: 1,
@@ -49,26 +51,8 @@ const HomePage = () => {
             className="font-roboto font-bold lg:w-[60%]  md:w-[70%] sm:w-[80%] mx-auto text-3xl sm:text-center"
           >
             Trusted by individuals and teams at the world best companies{}
-          </motion.p>
-          <div className="pt-4 pb-7 grid lg:gap-7 gap-4 xl:grid-cols-4  lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-4">
-            <Card
-              title="Simple URL Shortening"
-              desc="Experience the ease of creating short, memorable URLs in just a few clicks. Our intuitive interface and quick setup process ensure you can start shortening URLs without any hassle."
-            />
-            <Card
-              title="Powerful Analytics"
-              desc="Gain insights into your link performance with our comprehensive analytics dashboard. Track clicks, geographical data, and referral sources to optimize your marketing strategies."
-            />
-            <Card
-              title="Enhanced Security"
-              desc="Rest assured with our robust security measures. All shortened URLs are protected with advanced encryption, ensuring your data remains safe and secure."
-            />
-            <Card
-              title="Fast and Reliable"
-              desc="Enjoy lightning-fast redirects and high uptime with our reliable infrastructure. Your shortened URLs will always be available and responsive, ensuring a seamless experience for your users.
-"
-            />
-          </div>
+          </motion.p> */}
+          
         </div>
       </div>
     </>

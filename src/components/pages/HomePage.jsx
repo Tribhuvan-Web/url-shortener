@@ -1,4 +1,3 @@
-import Card from "../Card";
 import { motion } from "framer-motion";
 import Inputfield from "../input/Inputfield";
 import "../styles/BackGround.css";

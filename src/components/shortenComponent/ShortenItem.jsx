@@ -7,7 +7,7 @@ import { LiaCheckSolid } from "react-icons/lia";
 import { MdAnalytics, MdDelete, MdOutlineAdsClick } from "react-icons/md";
 import api from "../../api/api";
 import { useStoreContext } from "../../contextApi/ContextApi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Hourglass } from "react-loader-spinner";
 import Graph from "../../Dashboard/Graph";
 import toast from "react-hot-toast";
@@ -28,7 +28,7 @@ const ShortenItem = ({
   const navigate = useNavigate();
   const { token } = useStoreContext();
 
-  const subDomain = import.meta.env.VITE_REACT_SUBDOMAIN.replace(
+  const subDomain = import.meta.env.VITE_REACT_FRONTEND.replace(
     /^https?:\/\//,
     ""
   );
@@ -93,13 +93,21 @@ const ShortenItem = ({
       <div className="flex flex-col sm:flex-row sm:justify-between items-center">
         <div className="flex-1 space-y-2">
           <div className="flex items-center gap-2">
-            <a
+            {/* <a
               href={`${import.meta.env.VITE_REACT_SUBDOMAIN}/${shortUrl}`}
               target="_blank"
               className="text-lg font-semibold text-blue-600 hover:underline"
             >
               {subDomain + "/" + `${shortUrl}`}
-            </a>
+            </a> */}
+
+            <Link
+              target="_blank"
+              className="text-lg font-semibold text-blue-600 hover:underline"
+              to={import.meta.env.VITE_REACT_FRONTEND + "/s/" + `${shortUrl}`}
+            >
+              {subDomain + "/s" + `${shortUrl}`}
+            </Link>
             <FaExternalLinkAlt className="text-blue-600" />
           </div>
           <div className="text-gray-700">{originalUrl}</div>
@@ -118,7 +126,7 @@ const ShortenItem = ({
         <div className="flex items-center gap-4 mt-4 sm:mt-0">
           <CopyToClipboard
             onCopy={() => setIsCopied(true)}
-            text={`${import.meta.env.VITE_REACT_SUBDOMAIN}/s/${shortUrl}`}
+            text={`${import.meta.env.VITE_REACT_FRONTEND}/s/${shortUrl}`}
           >
             <div className="flex items-center gap-2 bg-blue-600 text-slate-300 px-4 py-2 rounded-md cursor-pointer hover:bg-blue-700 transition">
               <button>{isCopied ? "Copied" : "Copy"}</button>

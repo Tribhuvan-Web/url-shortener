@@ -22,7 +22,7 @@ export default function ShortenPopUp({ open, setOpen, refetch }) {
         aria-describedby="modal-modal-description"
       >
         <div className="flex justify-center items-center h-full w-full">
-          <CreateNewwwShorten setOpen={setOpen} refetch={refetch} />
+          <CreateNewShorten setOpen={setOpen} refetch={refetch} />
         </div>
       </Modal>
     </div>

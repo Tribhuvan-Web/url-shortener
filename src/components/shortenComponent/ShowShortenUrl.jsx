@@ -25,7 +25,6 @@ function ShowShortenUrl({ shortenUrl, isCreating }) {
             {shortenUrl}
           </p>
 
-          {/* Copy Button */}
           <CopyToClipboard onCopy={handleCopy} text={shortenUrl}>
             <div
               className={`

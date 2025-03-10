@@ -30,7 +30,7 @@ const ShortenItem = ({
 
   const subDomain = import.meta.env.VITE_REACT_FRONTEND.replace(
     /^https?:\/\//,
-    ""
+    "" 
   );
 
   const deleteUrlHandler = async (id) => {
@@ -60,10 +60,13 @@ const ShortenItem = ({
   };
 
   const fetchUrl = async () => {
+    const startDate = dayjs().subtract(30, "day").format("YYYY-MM-DDTHH:mm:ss");
+    const endDate = dayjs().format("YYYY-MM-DDTHH:mm:ss");
+
     setLoader(true);
     try {
       const { data } = await api.get(
-        `api/urls/analytics/${selectedUrl}?startDate=2025-01-01T00:00:00&endDate=2025-03-31T23:59:59`,
+        `api/urls/analytics/${selectedUrl}?startDate=${startDate}&endDate=${endDate}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -102,11 +105,11 @@ const ShortenItem = ({
             </a> */}
 
             <Link
-              target="_blank"
+              target="_"
               className="text-lg font-semibold text-blue-600 hover:underline"
               to={import.meta.env.VITE_REACT_FRONTEND + "/s/" + `${shortUrl}`}
             >
-              {subDomain + "/s" + `${shortUrl}`}
+              {subDomain + "/s/" + `${shortUrl}`}
             </Link>
             <FaExternalLinkAlt className="text-blue-600" />
           </div>

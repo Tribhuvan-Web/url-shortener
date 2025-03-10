@@ -1,4 +1,4 @@
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import LandingPage from "./components/pages/LandingPage";
 import HomePage from "./components/pages/HomePage";
 import AboutPage from "./components/pages/AboutPage";
@@ -13,10 +13,11 @@ import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "./components/pages/ErrorPage";
 
 const AppRouter = () => {
-  
+  const hideHeaderFooter = location.pathname.startsWith("/s");
+
   return (
     <>
-      <Navbar />
+      {!hideHeaderFooter && <Navbar />}
       <Toaster position="bottom-center" />
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -39,7 +40,7 @@ const AppRouter = () => {
         <Route
           path="*"
           element={
-            <PrivateRoute publicPage={false}>
+            <PrivateRoute>
               <ErrorPage />
             </PrivateRoute>
           }
@@ -76,8 +77,9 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
+        <Route path="/s/:url" element={<ShortenUrlPage />} />
       </Routes>
-      <Footer />
+      {!hideHeaderFooter && <Footer />}
     </>
   );
 };

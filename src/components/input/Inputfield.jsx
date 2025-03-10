@@ -7,7 +7,6 @@ import { Snackbar, Alert } from "@mui/material";
 import { useStoreContext } from "../../contextApi/ContextApi";
 import api from "../../api/api";
 
-
 const Inputfield = ({ onValidUrl = null }) => {
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
@@ -55,6 +54,11 @@ const Inputfield = ({ onValidUrl = null }) => {
       setError("An error occurred. Please try again");
     }
   };
+  const handleCloseModal = () => {
+    setUrl("");
+    setShortenUrl("");
+    setOpenModal(false);
+  };
 
   return (
     <div className="p-8 sm:w-9/12  mx-auto bg-gray-50 dark:bg-gray-900 border-solid border-white border-2 static z-20 shadow-xl shadow-[#2c4850] rounded-3xl">
@@ -83,18 +87,16 @@ const Inputfield = ({ onValidUrl = null }) => {
           className="lg:p-2 p-1.5 sm:max-w-60 rounded-lg bg-blue-500 text-white cursor-pointer hover:bg-[#2c4850] duration-200 disabled:opacity-50"
         >
           <span className=" text-white font-bold  flex items-center justify-center gap-2 ">
-            <p>Get your link for free</p>
+            <p>Get your link for free </p>
+            <FaArrowRight className="text-white font-bold text-lg" />
           </span>
         </button>
       </form>
 
-      <Modal
-        open={openModal}
-        onClose={() => setOpenModal(false)}
-        className="flex items-center justify-center p-4"
-      >
-        <div className="bg-white rounded-xl p-6 w-full max-w-md">
-          <h2 className="text-2xl font-bold mb-4 text-gray-800">
+      <Modal open={openModal} 
+      className="flex items-center justify-center p-4">
+        <div className="bg-white rounded-xl p-6 w-full max-w-md items-center flex flex-col">
+          <h2 className="text-2xl font-bold mb-4 text-gray-800 mx-auto">
             Your Shortened URL
           </h2>
           <div className="mb-6">
@@ -103,7 +105,7 @@ const Inputfield = ({ onValidUrl = null }) => {
                 href={shortenUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:underline break-words text-sm"
+                className="text-blue-600 hover:underline break-words text-md"
               >
                 {shortenUrl}
               </a>
@@ -118,7 +120,7 @@ const Inputfield = ({ onValidUrl = null }) => {
             </div>
           </div>
           <button
-            onClick={() => setOpenModal(false)}
+            onClick={handleCloseModal}
             className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Close

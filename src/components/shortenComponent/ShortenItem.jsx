@@ -120,7 +120,7 @@ const ShortenItem = ({
             onCopy={() => setIsCopied(true)}
             text={`${import.meta.env.VITE_REACT_SUBDOMAIN}/s/${shortUrl}`}
           >
-            <div className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-blue-700 transition">
+            <div className="flex items-center gap-2 bg-blue-600 text-slate-300 px-4 py-2 rounded-md cursor-pointer hover:bg-blue-700 transition">
               <button>{isCopied ? "Copied" : "Copy"}</button>
               {isCopied ? (
                 <LiaCheckSolid className="text-lg" />
@@ -131,7 +131,7 @@ const ShortenItem = ({
           </CopyToClipboard>
           <div
             onClick={() => analyticsHandler(shortUrl)}
-            className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-red-700 transition"
+            className="flex items-center gap-2 bg-teal-900 text-slate-300 px-4 py-2 rounded-md cursor-pointer hover:bg-[#233732] transition"
           >
             <button>Analytics</button>
             <MdAnalytics className="text-lg" />
@@ -140,7 +140,7 @@ const ShortenItem = ({
       </div>
       <div className="flex justify-end text-end">
         <MdDelete
-          className="text-2xl text-red-700 cursor-pointer"
+          className="text-2xl text-red-700 hover:text-red-900 cursor-pointer"
           onClick={() => deleteUrlHandler(id)}
         />
       </div>

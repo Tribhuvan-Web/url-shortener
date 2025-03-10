@@ -17,6 +17,7 @@ const Navbar = () => {
     setToken(null);
     localStorage.removeItem("JWT_TOKEN");
     navigate("/login");
+    closeNavbar();
   };
   const loginHandler = () => {
     navigate("/login");
@@ -104,14 +105,15 @@ const Navbar = () => {
           </li>
         </ul>
         <div
-          className={`flex sm:flex-row flex-col gap-4 sm:mt-0 mt-4 ${
-            navbarOpen ? "fixed bottom-4" : ""
+          className={` 
+           flex sm:flex-row flex-col gap-4 sm:mt-0 mt-4  sm:ml-auto ${
+            navbarOpen ? "hidden " : ""
           } sm:static`}
         >
           {token && (
-            <div className="group relative inline-block">
-              <div className="flex items-center space-x-3 cursor-pointer">
-                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#76ABAE] to-[#31363F] rounded-full shadow-lg transition-transform duration-300 hover:scale-110">
+            <div className="group relative  inline-block ">
+              <div className=" flex items-center space-x-3 cursor-pointer">
+                <div className=" flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#76ABAE] to-[#31363F] rounded-full shadow-lg transition-transform duration-300 hover:scale-110">
                   <span className="text-white font-bold text-xl">
                     {username.substring(0, 1).toUpperCase()}
                   </span>
@@ -122,7 +124,9 @@ const Navbar = () => {
                 <IoMdArrowDropdown className="text-white font-black" />
               </div>
 
-              <div className="absolute right-0 mt-3 w-64 origin-top-right scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-200">
+              <div
+                className={` absolute right-0 mt-3 w-64 origin-top-right scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-200`}
+              >
                 <div className="bg-[#31363F] rounded-lg shadow-xl p-4 space-y-3 border border-[#76ABAE]/20">
                   <ul className="space-y-2 text-white">
                     <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
@@ -194,6 +198,78 @@ const Navbar = () => {
               LogIn
             </button>
           )}
+        </div>
+        <hr className="text-white mt-5 font-bold " />
+        
+        <div className={`${navbarOpen ? "" : "hidden"} mt-10`}>
+          <div className="flex flex-col items-center space-x-3 cursor-pointer">
+            <div className="flex  items-center justify-center w-12 h-12 bg-gradient-to-br from-[#76ABAE] to-[#31363F] rounded-full shadow-lg transition-transform duration-300 hover:scale-110">
+              <span className="text-white font-bold text-xl">
+                {username.substring(0, 1).toUpperCase()}
+              </span>
+            </div>
+            <div className="text-white my-2">
+              <p className="font-semibold text-lg">{username}</p>
+              <ul className="space-y-2 text-white mt-6">
+                    <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
+                      <a href="#" className="flex items-center space-x-2">
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                          />
+                        </svg>
+                        <span>Terms & Conditions</span>
+                      </a>
+                    </li>
+                    <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
+                      <a href="#" className="flex items-center space-x-2">
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                          />
+                        </svg>
+                        <span>Privacy Policy</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <hr className="text-white w-3/4 mx-auto"/>
+                  <button
+                    onClick={logoutHandler}
+                    className="flex items-center justify-center space-x-2 bg-[#76ABAE] hover:bg-[#5d8c8f] text-white font-semibold px-4 py-2 mt-10 rounded-md transition-all duration-200"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                      />
+                    </svg>
+                    <span>Logout</span>
+                  </button>
+            </div>
+          </div>
         </div>
       </div>
       <button

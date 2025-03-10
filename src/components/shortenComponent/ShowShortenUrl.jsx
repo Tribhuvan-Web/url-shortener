@@ -19,22 +19,23 @@ function ShowShortenUrl({ shortenUrl, isCreating }) {
     <div className={`${shortenUrl ? "block" : "hidden"} w-full mt-4`}>
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-sm p-4">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          {/* Shortened URL Display */}
-          <span className="text-teal-700 font-medium truncate w-full sm:w-auto">
+         
+          <p className="text-blue-500 font-medium truncate w-full sm:w-auto">
+            
             {shortenUrl}
-          </span>
+          </p>
 
           {/* Copy Button */}
           <CopyToClipboard onCopy={handleCopy} text={shortenUrl}>
             <div
               className={`
               flex items-center gap-2 
-              ${isCopied ? "bg-teal-700" : "bg-teal-500"} 
+              ${isCopied ? "bg-blue-700" : "bg-blue-500"} 
               text-white px-4 py-2 rounded-md 
               ${
                 isCreating
                   ? "opacity-50 cursor-not-allowed"
-                  : "cursor-pointer hover:bg-teal-600"
+                  : "cursor-pointer hover:bg-blue-600"
               }
               transition-colors w-full sm:w-auto justify-center
             `}

@@ -12,6 +12,7 @@ const TextField = ({
   min,
   value,
   placeholder,
+  readOnly,
 }) => {
   const validationRules = {
     required: { value: required, message },
@@ -62,6 +63,7 @@ const TextField = ({
           errors[id]?.message ? "border-red-500" : "border-slate-600"
         }`}
         {...register(id, validationRules)}
+        readOnly={readOnly}
       />
 
       {errors[id]?.message && (

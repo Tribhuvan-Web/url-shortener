@@ -75,13 +75,16 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
             message="URL is required"
             register={register}
             errors={errors}
+            readOnly={!!shortenUrl}
+        
           />
         </div>
+
         {shortenUrl ? (
           <ShowShortenUrl shortenUrl={shortenUrl} />
         ) : (
           <button
-            className={`bg-custom-gradient font-semibold text-white w-full py-3 rounded-lg mt-5 transition-all duration-300 ${
+            className={`bg-custom-gradient bg-blue-500  font-semibold text-white w-full py-3 rounded-lg mt-5 transition-all duration-300 ${
               creating ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
             }`}
             disabled={creating}

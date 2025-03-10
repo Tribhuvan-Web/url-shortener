@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useStoreContext } from "../../contextApi/ContextApi";
 import { Link } from "react-router-dom";
-import "/BackGround.css"
+import "../styles/BackGround.css";
+import BackGround from "../backGround/BackGround";
 
 const LandingPage = () => {
   const navigate = useNavigate();

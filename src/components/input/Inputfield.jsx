@@ -93,8 +93,7 @@ const Inputfield = ({ onValidUrl = null }) => {
         </button>
       </form>
 
-      <Modal open={openModal} 
-      className="flex items-center justify-center p-4">
+      <Modal open={openModal} className="flex items-center justify-center p-4">
         <div className="bg-white rounded-xl p-6 w-full max-w-md items-center flex flex-col">
           <h2 className="text-2xl font-bold mb-4 text-gray-800 mx-auto">
             Your Shortened URL

@@ -1,7 +1,7 @@
 import Card from "../Card";
 import { motion } from "framer-motion";
 import Inputfield from "../input/Inputfield";
-import BackGround from "../backGround/backGround";
+import BackGround from "../backGround/BackGround";
 
 const HomePage = () => {
 

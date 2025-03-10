@@ -10,12 +10,6 @@ const LandingPage = () => {
 
   const { token } = useStoreContext();
 
-  const handleValidUrl = () => {
-    navigate("/login");
-  };
-
-  let desc =
-    "Generate short, memorable links with ease using our URL shortener service. Our tool is free to use. Try it out now!";
   return (
     <>
       <div className="min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900 lg:px-14 sm:px-8 px-4  text-white">

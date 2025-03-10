@@ -50,7 +50,7 @@ const LandingPage = () => {
             </div>
             <div className="sm:w-[35%] w-full sm:py-6 py-16 justify-end items-center z-10 ">
               <img
-                src="src/assets/bgimg.png"
+                src="images/bgimg.png"
                 alt="Landing Page Logo"
                 className=" object-cover "
               />

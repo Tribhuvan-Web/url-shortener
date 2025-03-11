@@ -37,7 +37,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
         },
       });
 
-      const shortUrl = `${import.meta.env.VITE_REACT_SUBDOMAIN}/${
+      const shortUrl = `${import.meta.env.VITE_REACT_FRONTEND }/${
         res.shortUrl
       }`;
 
@@ -45,7 +45,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
       setCreating(false);
       await refetch();
     } catch (error) {
-      toast.error("An error occurred. Please try again", {
+      toast.error("An error occurred. Please do try again", {
         position: "bottom-center",
         className: "bg-red-500 text-white",
         duration: 3000,
@@ -75,13 +75,16 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
             message="URL is required"
             register={register}
             errors={errors}
+            readOnly={!!shortenUrl}
+        
           />
         </div>
+
         {shortenUrl ? (
           <ShowShortenUrl shortenUrl={shortenUrl} />
         ) : (
           <button
-            className={`bg-custom-gradient font-semibold text-white w-full py-3 rounded-lg mt-5 transition-all duration-300 ${
+            className={`bg-custom-gradient bg-blue-500  font-semibold text-white w-full py-3 rounded-lg mt-5 transition-all duration-300 ${
               creating ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
             }`}
             disabled={creating}

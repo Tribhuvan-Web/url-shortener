@@ -1,4 +1,4 @@
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import LandingPage from "./components/pages/LandingPage";
 import HomePage from "./components/pages/HomePage";
 import AboutPage from "./components/pages/AboutPage";
@@ -14,10 +14,11 @@ import ErrorPage from "./components/pages/ErrorPage";
 import ChatAgent from "./components/ChatAgent";
 
 const AppRouter = () => {
-  
+  const hideHeaderFooter = location.pathname.startsWith("/s");
+
   return (
     <>
-      <Navbar />
+      {!hideHeaderFooter && <Navbar />}
       <ChatAgent />
       <Toaster position="bottom-center" />
       <Routes>
@@ -41,7 +42,7 @@ const AppRouter = () => {
         <Route
           path="*"
           element={
-            <PrivateRoute publicPage={false}>
+            <PrivateRoute>
               <ErrorPage />
             </PrivateRoute>
           }
@@ -78,8 +79,9 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
+        <Route path="/s/:url" element={<ShortenUrlPage />} />
       </Routes>
-      <Footer />
+      {!hideHeaderFooter && <Footer />}
     </>
   );
 };
@@ -89,7 +91,7 @@ export default AppRouter;
 export const SubDomainRouter = () => {
   return (
     <Routes>
-      <Route path="/:url" element={<ShortenUrlPage />} />
+      <Route path="/s/:url" element={<ShortenUrlPage />} />
     </Routes>
   );
 };

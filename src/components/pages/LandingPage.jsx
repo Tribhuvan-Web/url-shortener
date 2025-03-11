@@ -3,19 +3,14 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useStoreContext } from "../../contextApi/ContextApi";
 import { Link } from "react-router-dom";
-import BackGround from "../backGround/backGround";
+import "../styles/BackGround.css";
+import BackGround from "../backGround/BackGround";
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
   const { token } = useStoreContext();
 
-  const handleValidUrl = () => {
-    navigate("/login");
-  };
-
-  let desc =
-    "Generate short, memorable links with ease using our URL shortener service. Our tool is free to use. Try it out now!";
   return (
     <>
       <div className="min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900 lg:px-14 sm:px-8 px-4  text-white">
@@ -50,7 +45,7 @@ const LandingPage = () => {
             </div>
             <div className="sm:w-[35%] w-full sm:py-6 py-16 justify-end items-center z-10 ">
               <img
-                src="src/assets/bgimg.png"
+                src="images/bgimg.png"
                 alt="Landing Page Logo"
                 className=" object-cover "
               />

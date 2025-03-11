@@ -7,7 +7,7 @@ import { LiaCheckSolid } from "react-icons/lia";
 import { MdAnalytics, MdDelete, MdOutlineAdsClick } from "react-icons/md";
 import api from "../../api/api";
 import { useStoreContext } from "../../contextApi/ContextApi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Hourglass } from "react-loader-spinner";
 import Graph from "../../Dashboard/Graph";
 import toast from "react-hot-toast";
@@ -28,9 +28,9 @@ const ShortenItem = ({
   const navigate = useNavigate();
   const { token } = useStoreContext();
 
-  const subDomain = import.meta.env.VITE_REACT_SUBDOMAIN.replace(
+  const subDomain = import.meta.env.VITE_REACT_FRONTEND.replace(
     /^https?:\/\//,
-    ""
+    "" 
   );
 
   const deleteUrlHandler = async (id) => {
@@ -60,10 +60,13 @@ const ShortenItem = ({
   };
 
   const fetchUrl = async () => {
+    const startDate = dayjs().subtract(30, "day").format("YYYY-MM-DDTHH:mm:ss");
+    const endDate = dayjs().format("YYYY-MM-DDTHH:mm:ss");
+
     setLoader(true);
     try {
       const { data } = await api.get(
-        `api/urls/analytics/${selectedUrl}?startDate=2025-01-01T00:00:00&endDate=2025-03-31T23:59:59`,
+        `api/urls/analytics/${selectedUrl}?startDate=${startDate}&endDate=${endDate}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -93,13 +96,21 @@ const ShortenItem = ({
       <div className="flex flex-col sm:flex-row sm:justify-between items-center">
         <div className="flex-1 space-y-2">
           <div className="flex items-center gap-2">
-            <a
+            {/* <a
               href={`${import.meta.env.VITE_REACT_SUBDOMAIN}/${shortUrl}`}
               target="_blank"
               className="text-lg font-semibold text-blue-600 hover:underline"
             >
               {subDomain + "/" + `${shortUrl}`}
-            </a>
+            </a> */}
+
+            <Link
+              target="_"
+              className="text-lg font-semibold text-blue-600 hover:underline"
+              to={import.meta.env.VITE_REACT_FRONTEND + "/s/" + `${shortUrl}`}
+            >
+              {subDomain + "/s/" + `${shortUrl}`}
+            </Link>
             <FaExternalLinkAlt className="text-blue-600" />
           </div>
           <div className="text-gray-700">{originalUrl}</div>
@@ -118,9 +129,9 @@ const ShortenItem = ({
         <div className="flex items-center gap-4 mt-4 sm:mt-0">
           <CopyToClipboard
             onCopy={() => setIsCopied(true)}
-            text={`${import.meta.env.VITE_REACT_SUBDOMAIN}/s/${shortUrl}`}
+            text={`${import.meta.env.VITE_REACT_FRONTEND}/s/${shortUrl}`}
           >
-            <div className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-blue-700 transition">
+            <div className="flex items-center gap-2 bg-blue-600 text-slate-300 px-4 py-2 rounded-md cursor-pointer hover:bg-blue-700 transition">
               <button>{isCopied ? "Copied" : "Copy"}</button>
               {isCopied ? (
                 <LiaCheckSolid className="text-lg" />
@@ -131,7 +142,7 @@ const ShortenItem = ({
           </CopyToClipboard>
           <div
             onClick={() => analyticsHandler(shortUrl)}
-            className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-red-700 transition"
+            className="flex items-center gap-2 bg-teal-900 text-slate-300 px-4 py-2 rounded-md cursor-pointer hover:bg-[#233732] transition"
           >
             <button>Analytics</button>
             <MdAnalytics className="text-lg" />
@@ -140,7 +151,7 @@ const ShortenItem = ({
       </div>
       <div className="flex justify-end text-end">
         <MdDelete
-          className="text-2xl text-red-700 cursor-pointer"
+          className="text-2xl text-red-700 hover:text-red-900 cursor-pointer"
           onClick={() => deleteUrlHandler(id)}
         />
       </div>

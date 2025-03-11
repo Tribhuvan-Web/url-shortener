@@ -24,7 +24,11 @@ const Footer = () => {
           <a href="#" className="hover:text-gray-200">
             <FaInstagram size={24} />
           </a>
-          <a href="#" className="hover:text-gray-200">
+          <a
+            href="https://www.linkedin.com/in/tribhuvan-nath-sagar/"
+            className="hover:text-gray-200"
+            target="_blank"
+          >
             <FaLinkedin size={24} />
           </a>
         </div>

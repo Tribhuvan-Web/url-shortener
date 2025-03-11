@@ -1,14 +1,9 @@
-import Card from "../Card";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { useStoreContext } from "../../contextApi/ContextApi";
 import Inputfield from "../input/Inputfield";
-import BackGround from "../backGround/backGround";
+import "../styles/BackGround.css";
+import BackGround from "../backGround/BackGround";
 
 const HomePage = () => {
-  // const navigate = useNavigate();
-
-  // const { token } = useStoreContext();
 
   return (
     <>

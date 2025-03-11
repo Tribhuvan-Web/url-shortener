@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import "./backGround.css";
+import "../styles/BackGround.css";
 
 function BackGround() {
   const [stars, setStars] = useState([]);

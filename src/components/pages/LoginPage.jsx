@@ -127,7 +127,7 @@ const LoginPage = () => {
         </form>
         <div className="sm:flex hidden w-[350px]  py-8 items-center  sm:px-4 rounded-md">
           <img
-            src="../src/assets/login.png"
+            src="images/login.png"
             alt="login.png"
             className="h-5/6"
           />

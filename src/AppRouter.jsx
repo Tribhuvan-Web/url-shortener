@@ -11,21 +11,23 @@ import DashboardLayout from "./Dashboard/DashboardLayout";
 import ShortenUrlPage from "./components/ShortenUrlPage";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "./components/pages/ErrorPage";
+import ChatAgent from "./components/ChatAgent";
 
 const AppRouter = () => {
   
   return (
     <>
       <Navbar />
+      <ChatAgent />
       <Toaster position="bottom-center" />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route
           path="/home"
           element={
-            <PrivateRoute publicPage={false}>
+          
               <HomePage />
-            </PrivateRoute>
+            
           }
         />
         <Route

@@ -41,9 +41,6 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
       const baseUrl = import.meta.env.VITE_REACT_FRONTEND;
       const shortUrlPath = res.shortUrl;
       const shortUrl = cleanUrl(baseUrl, shortUrlPath); // Use the utility function
-      const shortUrl = `${import.meta.env.VITE_REACT_FRONTEND }/s/${
-        res.shortUrl
-      }`;
 
       setShortenUrl(shortUrl);
       setCreating(false);

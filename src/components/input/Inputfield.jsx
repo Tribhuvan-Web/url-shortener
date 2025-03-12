@@ -69,7 +69,7 @@ const Inputfield = ({ onValidUrl = null }) => {
       </h1>
       <p className="mb-4 text-white">No payment required.</p>
 
-      <form onSubmit={handleSubmit} className="flex flex-col md:mt-12 ">
+      <form onSubmit={handleSubmit} className="flex flex-col md:mt-12 " >
         <span className="py-2 font-bold text-lg ">
           Type or paste your long link here
         </span>

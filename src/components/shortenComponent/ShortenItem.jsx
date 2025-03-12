@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FaExternalLinkAlt, FaRegCalendar } from "react-icons/fa";
 import { IoCopy } from "react-icons/io5";
@@ -20,11 +20,11 @@ const ShortenItem = ({
   createDate,
   refetch,
 }) => {
-  const [isCopied, setIsCopied] = React.useState(false);
-  const [analyticToggle, setAnalyticToggle] = React.useState(false);
-  const [selectedUrl, setSelectedUrl] = React.useState("");
-  const [loader, setLoader] = React.useState(false);
-  const [analyticsData, setAnalyticsData] = React.useState([]);
+  const [isCopied, setIsCopied] = useState(false);
+  const [analyticToggle, setAnalyticToggle] = useState(false);
+  const [selectedUrl, setSelectedUrl] = useState("");
+  const [loader, setLoader] = useState(false);
+  const [analyticsData, setAnalyticsData] = useState([]);
   const navigate = useNavigate();
   const { token } = useStoreContext();
 

@@ -36,6 +36,8 @@ const Inputfield = ({ onValidUrl = null }) => {
   };
 
   const createShortUrlHandler = async (data) => {
+    setLoading(true);
+    
     try {
       const { data: res } = await api.post("/api/urls/shorten", data, {
         headers: {

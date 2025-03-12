@@ -49,9 +49,9 @@ const DashboardLayout = () => {
             )}
             <Graph graphData={totalClicks} />
           </div>
-          <div className="py-5 mt-5 sm:text-end text-center">
+          <div className="py-5 mt-5 sm:text-end text-center cursor-pointer">
             <button
-              className=" bg-gradient-to-tr   from-[#235d5d] to-[#5c7474] hover:text-slate-400 px-6 py-2 rounded-md font-semibold text-slate-200"
+              className=" bg-gradient-to-br  from-[#235d5d] to-[#5c7474] hover:text-slate-400 px-6 py-2 rounded-md font-semibold text-slate-200  "
               onClick={() => setShortenPopUp(true)}
             >
               Create a new short url
@@ -61,7 +61,7 @@ const DashboardLayout = () => {
           <div>
             {!isLoading && myShortenUrls.length === 0 ? (
               <div className="flex justify-center pt-16">
-                <div className="flex gap-2 items-center justify-center  py-3 sm:px-8 px-5 rounded-md  bg-gray-50">
+                <div className="flex gap-2 items-center justify-center  py-3 sm:px-8 px-5 rounded-md  bg-gray-100">
                   <h1 className="text-slate-800 font-montserrat sm:text-[18px] text-[14px] font-semibold ">
                     You haven't created any short link yet
                   </h1>

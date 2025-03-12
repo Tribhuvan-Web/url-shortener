@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoIosMenu, IoMdArrowDropdown } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
@@ -12,6 +12,8 @@ const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const { token, setToken } = useStoreContext();
   const [username, setUsername] = useState("");
+  const [userDropDown, setUserDropDown] = useState(false);
+
 
   const logoutHandler = () => {
     setToken(null);
@@ -28,11 +30,29 @@ const Navbar = () => {
     setNavbarOpen(false);
   };
 
+  const handleDropdownClick = () => {
+    setUserDropDown((prev) => !prev);
+  };
+
   useEffect(() => {
     if (token) {
       fetchUsername();
     }
   }, [token]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 640) {
+        setNavbarOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const fetchUsername = async () => {
     try {
@@ -59,8 +79,8 @@ const Navbar = () => {
       <div
         className={`sm:flex sm:justify-between sm:static items-center gap-4 sm:flex-row sm:w-full sm:px-10 sm:py-2 px-6 py-2 sm:shadow-none shadow-lg ${
           navbarOpen
-            ? "fixed right-0 top-0 h-full w-[150px] bg-[#2c4850] flex-col ease-out duration-300"
-            : "fixed right-[-200px] top-0 h-full w-[150px] bg-[#2c4850] flex-col ease-out duration-300"
+            ? "fixed right-0 top-0 h-full w-[150px] bg-[#2c4850] flex-col z-50 ease-out duration-300"
+            : "fixed right-[-200px] top-0 h-full w-[150px] bg-[#2c4850] z-30 flex-col ease-out duration-300"
         }`}
       >
         <ul
@@ -107,13 +127,16 @@ const Navbar = () => {
         <div
           className={` 
            flex sm:flex-row flex-col gap-4 sm:mt-0 mt-4  sm:ml-auto ${
-            navbarOpen ? "hidden " : ""
-          } sm:static`}
+             navbarOpen ? "hidden " : ""
+           } sm:static`}
         >
           {token && (
             <div className="group relative  inline-block ">
-              <div className=" flex items-center space-x-3 cursor-pointer">
-                <div className=" flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#76ABAE] to-[#31363F] rounded-full shadow-lg transition-transform duration-300 hover:scale-110">
+              <div
+                className=" flex items-center space-x-3 cursor-pointer"
+                onClick={handleDropdownClick}
+              >
+                <div className=" flex items-center justify-center w-10 h-10 bg-gradient-to-br from-[#76ABAE] to-[#31363F] rounded-full shadow-lg transition-transform duration-300 hover:scale-110">
                   <span className="text-white font-bold text-xl">
                     {username.substring(0, 1).toUpperCase()}
                   </span>
@@ -125,7 +148,9 @@ const Navbar = () => {
               </div>
 
               <div
-                className={` absolute right-0 mt-3 w-64 origin-top-right scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-200`}
+                className={` ${
+                  userDropDown ? "scale-100 opacity-100" : ""
+                } absolute right-0 mt-3 w-64 origin-top-right scale-0 opacity-0 lg:group-hover:scale-100 lg:group-hover:opacity-100 transition-all duration-200`}
               >
                 <div className="bg-[#31363F] rounded-lg shadow-xl p-4 space-y-3 border border-[#76ABAE]/20">
                   <ul className="space-y-2 text-white">
@@ -184,7 +209,7 @@ const Navbar = () => {
                         d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
                       />
                     </svg>
-                    <span>Logout</span>
+                    {token && <span>Logout</span>}
                   </button>
                 </div>
               </div>
@@ -199,60 +224,25 @@ const Navbar = () => {
             </button>
           )}
         </div>
+
         <hr className="text-white mt-5 font-bold " />
-        
+
         <div className={`${navbarOpen ? "" : "hidden"} mt-10`}>
           <div className="flex flex-col items-center space-x-3 cursor-pointer">
-            <div className="flex  items-center justify-center w-12 h-12 bg-gradient-to-br from-[#76ABAE] to-[#31363F] rounded-full shadow-lg transition-transform duration-300 hover:scale-110">
-              <span className="text-white font-bold text-xl">
-                {username.substring(0, 1).toUpperCase()}
-              </span>
-            </div>
-            <div className="text-white my-2">
-              <p className="font-semibold text-lg">{username}</p>
+            {token && (
+              <div className="flex  items-center justify-center w-12 h-12 bg-gradient-to-br from-[#76ABAE] to-[#31363F] rounded-full shadow-lg transition-transform duration-300 hover:scale-110">
+                <span className="text-white font-bold text-xl">
+                  {username.substring(0, 1).toUpperCase()}
+                </span>
+              </div>
+            )}
+            <div className="text-white my-2 items-center text-center">
+              {token && (
+                <p className="font-semibold text-lg text-center">{username}</p>
+              )}
               <ul className="space-y-2 text-white mt-6">
-                    <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
-                      <a href="#" className="flex items-center space-x-2">
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
-                        <span>Terms & Conditions</span>
-                      </a>
-                    </li>
-                    <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
-                      <a href="#" className="flex items-center space-x-2">
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                          />
-                        </svg>
-                        <span>Privacy Policy</span>
-                      </a>
-                    </li>
-                  </ul>
-                  <hr className="text-white w-3/4 mx-auto"/>
-                  <button
-                    onClick={logoutHandler}
-                    className="flex items-center justify-center space-x-2 bg-[#76ABAE] hover:bg-[#5d8c8f] text-white font-semibold px-4 py-2 mt-10 rounded-md transition-all duration-200"
-                  >
+                <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
+                  <a href="#" className="flex items-center space-x-2">
                     <svg
                       className="w-5 h-5"
                       fill="none"
@@ -263,18 +253,69 @@ const Navbar = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                       />
                     </svg>
-                    <span>Logout</span>
-                  </button>
+                    <span>Terms & Conditions</span>
+                  </a>
+                </li>
+                <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
+                  <a href="#" className="flex items-center space-x-2">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                      />
+                    </svg>
+                    <span>Privacy Policy</span>
+                  </a>
+                </li>
+              </ul>
+              <hr className="text-white w-3/4 mx-auto" />
+              {token && (
+                <button
+                  onClick={logoutHandler}
+                  className="flex items-center justify-center space-x-2 bg-[#76ABAE] hover:bg-[#5d8c8f] text-white font-semibold px-4 py-2 mt-10  rounded-md transition-all duration-200"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                    />
+                  </svg>
+                  <span>Logout</span>
+                </button>
+              )}
+
+              {!token && (
+                <button
+                  className="bg-[#76ABAE] hover:bg-white hover:text-[#31363F] opacity-[0.8] list-none  text-white  cursor-pointer  font-semibold  px-6 py-2 mt-10  rounded-md transition-all duration-150"
+                  onClick={loginHandler}
+                >
+                  LogIn
+                </button>
+              )}
             </div>
           </div>
         </div>
       </div>
       <button
         onClick={() => setNavbarOpen(!navbarOpen)}
-        className="sm:hidden flex items-center sm:mt-0 fixed right-4 top-4"
+        className="sm:hidden flex items-center sm:mt-0 fixed right-4 z-50 top-4"
       >
         {navbarOpen ? (
           <RxCross2 className="text-white text-3xl" />

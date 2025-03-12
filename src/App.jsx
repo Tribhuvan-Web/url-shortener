@@ -1,7 +1,6 @@
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { getApps } from "./utils/helper";
-import ChatAgent from "./components/ChatAgent";
 
 export default function App() {
   const CurrentApp = getApps();
@@ -10,7 +9,7 @@ export default function App() {
     <>
       <Router>
         <CurrentApp />
-        {/* <ChatAgent /> */}
+      
       </Router>
     </>
   );

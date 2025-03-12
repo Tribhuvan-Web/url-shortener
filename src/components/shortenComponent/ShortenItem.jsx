@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FaExternalLinkAlt, FaRegCalendar } from "react-icons/fa";
 import { IoCopy } from "react-icons/io5";
@@ -20,17 +20,17 @@ const ShortenItem = ({
   createDate,
   refetch,
 }) => {
-  const [isCopied, setIsCopied] = React.useState(false);
-  const [analyticToggle, setAnalyticToggle] = React.useState(false);
-  const [selectedUrl, setSelectedUrl] = React.useState("");
-  const [loader, setLoader] = React.useState(false);
-  const [analyticsData, setAnalyticsData] = React.useState([]);
+  const [isCopied, setIsCopied] = useState(false);
+  const [analyticToggle, setAnalyticToggle] = useState(false);
+  const [selectedUrl, setSelectedUrl] = useState("");
+  const [loader, setLoader] = useState(false);
+  const [analyticsData, setAnalyticsData] = useState([]);
   const navigate = useNavigate();
   const { token } = useStoreContext();
 
   const subDomain = import.meta.env.VITE_REACT_FRONTEND.replace(
     /^https?:\/\//,
-    "" 
+    ""
   );
 
   const deleteUrlHandler = async (id) => {
@@ -96,16 +96,8 @@ const ShortenItem = ({
       <div className="flex flex-col sm:flex-row sm:justify-between  overflow-x-auto">
         <div className="flex-1 space-y-2 items-center justify-center  ">
           <div className="flex items-center gap-2">
-            {/* <a
-              href={`${import.meta.env.VITE_REACT_SUBDOMAIN}/${shortUrl}`}
-              target="_blank"
-              className="text-lg font-semibold text-blue-600 hover:underline"
-            >
-              {subDomain + "/" + `${shortUrl}`}
-            </a> */}
-
             <Link
-              target="_"
+              target="_blank"
               className="text-lg font-semibold text-blue-600 hover:underline"
               to={import.meta.env.VITE_REACT_FRONTEND + "/s/" + `${shortUrl}`}
             >
@@ -129,7 +121,7 @@ const ShortenItem = ({
         <div className="flex items-center gap-4 mt-4 sm:mt-0">
           <CopyToClipboard
             onCopy={() => setIsCopied(true)}
-            text={`${import.meta.env.VITE_REACT_FRONTEND}/s/${shortUrl}`}
+            text={`${import.meta.env.VITE_REACT_FRONTEND}+"/s/"+${shortUrl}`}
           >
             <div className="flex items-center gap-2 bg-blue-600 text-slate-300 px-4 py-2 rounded-md cursor-pointer hover:bg-blue-700 transition">
               <button>{isCopied ? "Copied" : "Copy"}</button>

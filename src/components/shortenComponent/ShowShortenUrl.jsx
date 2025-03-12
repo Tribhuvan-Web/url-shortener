@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { IoCopy } from "react-icons/io5";
 import { LiaCheckSolid } from "react-icons/lia";
 
 function ShowShortenUrl({ shortenUrl, isCreating }) {
-  const [isCopied, setIsCopied] = React.useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setIsCopied(false);
   }, [shortenUrl]);
 

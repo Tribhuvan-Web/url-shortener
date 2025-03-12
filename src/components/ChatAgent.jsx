@@ -14,7 +14,7 @@ function ChatAgent() {
 
   return (
     // token && (
-    <div className="fixed bottom-4 right-2 z-50">
+    <div className="fixed bottom-4 right-2 z-40">
       <div className="webchat" style={{ height: "500px", width: "350px" }}>
         <iframe
           style={{ height: "100%", width: "100%", border: "none" }}

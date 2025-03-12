@@ -37,7 +37,7 @@ const LandingPage = () => {
               </p>
               {!token && (
                 <Link to={"/register"} >
-                  <li className="bg-[#76ABAE] hover:bg-white hover:text-[#31363F] opacity-[0.8] list-none  text-white  cursor-pointer  font-semibold  px-16 py-2 mt-8 rounded-full transition-all duration-150">
+                  <li className="bg-[#76ABAE] hover:bg-white hover:text-[#31363F] opacity-[0.8] list-none  text-white  cursor-pointer  font-semibold  px-14 py-2 mt-8 rounded-full transition-all duration-150">
                     SignUp
                   </li>
                 </Link>
@@ -45,7 +45,7 @@ const LandingPage = () => {
             </div>
             <div className="sm:w-[35%] w-full sm:py-6 py-16 justify-end items-center z-10 ">
               <img
-                src="images/bgimg.png"
+                src="public/images/bgimg.png"
                 alt="Landing Page Logo"
                 className=" object-cover "
               />

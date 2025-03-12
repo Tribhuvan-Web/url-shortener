@@ -19,8 +19,7 @@ const TextField = ({
     minLength: min
       ? {
           value: min,
-          message:
-            "Password must consist of characters and number",
+          message: "Password must consist of minimum 4 characters and 4 number",
         }
       : null,
   };
@@ -39,8 +38,7 @@ const TextField = ({
   } else if (type === "password") {
     validationRules.pattern = {
       value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-      message:
-        "Password must consist of characters and number ",
+      message: "Password must consist of minimum 4 characters and 4 number ",
     };
   }
 

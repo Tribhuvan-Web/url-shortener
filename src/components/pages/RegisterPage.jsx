@@ -133,7 +133,7 @@ const RegisterPage = () => {
           </div>
 
           <p className="text-center text-sm text-slate-300 mt-2 ">
-            Already have an account?
+            Already have an account?{" "}
             <Link className="font-semibold underline " to="/login">
               <span className="text-[#76ABAE] font-bold hover:text-white ">
                 {" "}
@@ -143,7 +143,7 @@ const RegisterPage = () => {
           </p>
         </form>
         <div className="sm:flex hidden sm:w-[350px]  py-8 mt-4 items-center sm:px-8 px-4 rounded-md">
-          <img src="../src/assets/login.png" alt="" className="h-5/6" />
+          <img src="../public/images/login.png" alt="" className="h-5/6" />
         </div>
       </div>
     </div>

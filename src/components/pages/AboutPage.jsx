@@ -46,8 +46,8 @@ const AboutPage = () => {
             </div>
             <div className="sm:w-[25%] items-center  flex justify-center ">
               <img
-                src="src/assets/AboutLogo.png"
-                alt="Landing Page Logo"
+                src="public/images/AboutLogo.png"
+                alt="AboutLogo"
                 className=" h-2/4 object-cover"
               />
             </div>

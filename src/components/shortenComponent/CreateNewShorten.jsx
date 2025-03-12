@@ -7,6 +7,7 @@ import { RxCross2 } from "react-icons/rx";
 import toast from "react-hot-toast";
 import api from "../../api/api";
 import ShowShortenUrl from "./ShowShortenUrl";
+import { cleanUrl } from "../../utils/urlUtils"; // Import the utility function
 
 const CreateNewShorten = ({ setOpen, refetch }) => {
   const { token } = useStoreContext();
@@ -37,9 +38,9 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
         },
       });
 
-      const shortUrl = `${import.meta.env.VITE_REACT_FRONTEND }/${
-        res.shortUrl
-      }`;
+      const baseUrl = import.meta.env.VITE_REACT_FRONTEND;
+      const shortUrlPath = res.shortUrl;
+      const shortUrl = cleanUrl(baseUrl, shortUrlPath); // Use the utility function
 
       setShortenUrl(shortUrl);
       setCreating(false);
@@ -76,7 +77,6 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
             register={register}
             errors={errors}
             readOnly={!!shortenUrl}
-        
           />
         </div>
 

@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import LandingPage from "./components/pages/LandingPage";
 import HomePage from "./components/pages/HomePage";
 import AboutPage from "./components/pages/AboutPage";
@@ -13,6 +13,7 @@ import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "./components/pages/ErrorPage";
 
 const AppRouter = () => {
+  const location = useLocation();
   const hideHeaderFooter = location.pathname.startsWith("/s");
 
   return (

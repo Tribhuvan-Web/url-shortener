@@ -45,7 +45,7 @@ const Inputfield = ({ onValidUrl = null }) => {
         },
       });
 
-      const shortUrl = `${import.meta.env.VITE_REACT_SUBDOMAIN}/${
+      const shortUrl = `${import.meta.env.VITE_REACT_FRONTEND}/${
         res.shortUrl
       }`;
       setShortenUrl(shortUrl);

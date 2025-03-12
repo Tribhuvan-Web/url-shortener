@@ -37,7 +37,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
         },
       });
 
-      const shortUrl = `${import.meta.env.VITE_REACT_FRONTEND }/${
+      const shortUrl = `${import.meta.env.VITE_REACT_FRONTEND }/s/${
         res.shortUrl
       }`;
 

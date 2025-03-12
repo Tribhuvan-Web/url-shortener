@@ -92,9 +92,9 @@ const ShortenItem = ({
   }, [selectedUrl]);
 
   return (
-    <div className="bg-slate-300 shadow-lg border border-gray-200 rounded-lg p-6 mb-6">
-      <div className="flex flex-col sm:flex-row sm:justify-between items-center">
-        <div className="flex-1 space-y-2">
+    <div className="bg-slate-300  shadow-lg border border-gray-200 rounded-lg p-6 mb-6">
+      <div className="flex flex-col sm:flex-row sm:justify-between  overflow-x-auto">
+        <div className="flex-1 space-y-2 items-center justify-center  ">
           <div className="flex items-center gap-2">
             {/* <a
               href={`${import.meta.env.VITE_REACT_SUBDOMAIN}/${shortUrl}`}
@@ -113,7 +113,7 @@ const ShortenItem = ({
             </Link>
             <FaExternalLinkAlt className="text-blue-600" />
           </div>
-          <div className="text-gray-700">{originalUrl}</div>
+          <div className="text-gray-700 ">{originalUrl}</div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1 text-green-600 font-semibold">
               <MdOutlineAdsClick className="text-lg" />
@@ -180,10 +180,10 @@ const ShortenItem = ({
             <>
               {analyticsData.length === 0 && (
                 <div className="absolute flex flex-col  justify-center sm:items-center items-end  w-full left-0 top-0 bottom-0 right-0 m-auto">
-                  <h1 className=" text-slate-500 font-serif sm:text-2xl text-[15px] font-bold mb-1">
+                  <h1 className=" text-slate-500 font-serif sm:text-2xl text-[15px] font-bold mb-1 mx-auto">
                     No Data For This Time Period
                   </h1>
-                  <h3 className="sm:w-96 w-[90%] sm:ml-0 pl-6 text-center sm:text-lg text-[12px] text-slate-200 ">
+                  <h3 className="sm:w-96 w-[90%] sm:ml-0 pl-6 text-center sm:text-lg text-[12px] mx-auto text-slate-200 ">
                     Share your short link to get started
                   </h3>
                 </div>

@@ -20,7 +20,7 @@ const AppRouter = () => {
   return (
     <>
       {!hideHeaderFooter && <Navbar />}
-      <ChatAgent />
+     
       <Toaster position="bottom-center" />
       <Routes>
         <Route

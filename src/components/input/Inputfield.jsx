@@ -25,6 +25,7 @@ const Inputfield = ({ onValidUrl = null }) => {
   };
 
   const handleSubmit = async (e) => {
+    console.log("clicked");
     e.preventDefault();
     if (validateUrl(url)) {
       setError("");
@@ -36,8 +37,7 @@ const Inputfield = ({ onValidUrl = null }) => {
   };
 
   const createShortUrlHandler = async (data) => {
-    setLoading(true);
-    
+   
     try {
       const { data: res } = await api.post("/api/urls/shorten", data, {
         headers: {
@@ -47,7 +47,7 @@ const Inputfield = ({ onValidUrl = null }) => {
         },
       });
 
-      const shortUrl = `${import.meta.env.VITE_REACT_SUBDOMAIN}/${
+      const shortUrl = `${import.meta.env.VITE_REACT_SUBDOMAIN}/s/${
         res.shortUrl
       }`;
       setShortenUrl(shortUrl);
@@ -133,8 +133,9 @@ const Inputfield = ({ onValidUrl = null }) => {
         open={copyAlert}
         autoHideDuration={3000}
         onClose={() => setCopyAlert(false)}
+        className="fixed bottom-4 mx-auto"
       >
-        <Alert severity="success" variant="filled">
+        <Alert severity="success" variant="filled" >
           URL copied to clipboard!
         </Alert>
       </Snackbar>

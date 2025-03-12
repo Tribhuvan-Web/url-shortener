@@ -94,8 +94,8 @@ const AboutPage = () => {
           of clicking. A shortened URL has a higher chance of becoming a
           permalink. (A permalink is an URL that is intended to not change in
           the future).
-        </p>
           {isInView1 ? "" : <ReadMoreButton onClick={toggleViewMore1} />}
+        </p>
         {isInView1 && (
           <>
             <p className="dark:text-gray-300 mb-4">
@@ -114,8 +114,8 @@ const AboutPage = () => {
               service at Shortly delivers a quick, easy and free way to generate
               a shorter URL for your site. The process for URL shortening is
               reliable and secure, so you can safely generate a better URL.
-            </p>
               {isInView1 ? <ViewLessButton onClick={toggleViewMore1} /> : ""}
+            </p>
           </>
         )}
       </div>
@@ -149,8 +149,8 @@ const AboutPage = () => {
           Growing your site will be much more comfortable with a shortened URL.
           As you add more pages of content, a shortened URL makes it easier to
           link each subsequent page without creating an unnecessarily long URL.
-        </p>
           {isInView2 ? "" : <ReadMoreButton onClick={toggleViewMore2} />}
+        </p>
         {isInView2 && (
           <>
             <p className="dark:text-gray-300 mb-4">
@@ -173,8 +173,8 @@ const AboutPage = () => {
               to create an attractive, well-ranked and respectable website. URL
               shortners, like Shortly, are one more tool in your box to help you
               build the website you need.
-            </p>
               {isInView2 ? <ViewLessButton onClick={toggleViewMore2} /> : ""}
+            </p>
           </>
         )}
       </div>

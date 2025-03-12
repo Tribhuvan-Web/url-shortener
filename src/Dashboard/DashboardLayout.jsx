@@ -29,6 +29,12 @@ const DashboardLayout = () => {
   function onError() {
     navigate("/error");
   }
+
+  const OpenShortenPopUp = () => {
+    console.log("open");
+    setShortenPopUp(true);
+
+  }
   
   return (
     <div className="lg:px-14 sm:px-8 px-4 min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900">
@@ -49,10 +55,11 @@ const DashboardLayout = () => {
             )}
             <Graph graphData={totalClicks} />
           </div>
-          <div className="py-5 mt-5 sm:text-end text-center cursor-pointer">
+          <div className="py-5 mt-5 sm:text-end text-center cursor-pointer"
+          >
             <button
               className=" bg-gradient-to-br  from-[#235d5d] to-[#5c7474] hover:text-slate-400 px-6 py-2 rounded-md font-semibold text-slate-200  "
-              onClick={() => setShortenPopUp(true)}
+              onClick={OpenShortenPopUp}
             >
               Create a new short url
             </button>

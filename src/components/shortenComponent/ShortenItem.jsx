@@ -17,7 +17,7 @@ const ShortenItem = ({
   originalUrl,
   shortUrl,
   clickCount,
-  createDate,
+  createdDate,
   refetch,
 }) => {
   const [isCopied, setIsCopied] = useState(false);
@@ -114,7 +114,7 @@ const ShortenItem = ({
             </div>
             <div className="flex items-center gap-1 text-gray-600">
               <FaRegCalendar className="text-lg" />
-              <span>{dayjs(createDate).format("MMM DD, YYYY")}</span>
+              <span>{dayjs(createdDate).format("MMM DD, YYYY")}</span>
             </div>
           </div>
         </div>

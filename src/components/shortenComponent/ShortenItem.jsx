@@ -121,7 +121,7 @@ const ShortenItem = ({
         <div className="flex items-center gap-4 mt-4 sm:mt-0">
           <CopyToClipboard
             onCopy={() => setIsCopied(true)}
-            text={`${import.meta.env.VITE_REACT_FRONTEND}+"/s/"+${shortUrl}`}
+            text={`${import.meta.env.VITE_REACT_FRONTEND}/s/${shortUrl}`}
           >
             <div className="flex items-center gap-2 bg-blue-600 text-slate-300 px-4 py-2 rounded-md cursor-pointer hover:bg-blue-700 transition">
               <button>{isCopied ? "Copied" : "Copy"}</button>
@@ -171,11 +171,11 @@ const ShortenItem = ({
           ) : (
             <>
               {analyticsData.length === 0 && (
-                <div className="absolute flex flex-col  justify-center sm:items-center items-end  w-full left-0 top-0 bottom-0 right-0 m-auto">
-                  <h1 className=" text-slate-500 font-serif sm:text-2xl text-[15px] font-bold mb-1 mx-auto">
+                <div className="absolute flex flex-col justify-center sm:items-center w-full left-0 top-0 bottom-0 right-0 m-auto">
+                  <h1 className=" text-slate-500 pl-6 font-serif sm:text-2xl text-[15px] font-bold mb-1 mx-auto">
                     No Data For This Time Period
                   </h1>
-                  <h3 className="sm:w-96 w-[90%] sm:ml-0 pl-6 text-center sm:text-lg text-[12px] mx-auto text-slate-200 ">
+                  <h3 className=" w-[90%] pl-6 text-center sm:text-lg text-[12px] mx-auto text-slate-200 ">
                     Share your short link to get started
                   </h3>
                 </div>

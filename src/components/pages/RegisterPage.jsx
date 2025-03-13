@@ -45,11 +45,11 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-[clac(100vh-100px)]  bg-gray-50 dark:bg-gray-900  p-4  flex justify-center items-center">
-      <div className="sm:w-[700px] w-[600] sm:m-4 m-1 sm:my-28  my-36 sm:flex shadow-2xl shadow-[#2c4850] rounded-lg ">
+<div className="min-h-[calc(100vh-64px)] bg-gray-900 p-4 flex justify-center items-start sm:items-center">
+      <div className="sm:w-[700px] sm:m-4  mt-20 sm:my-28   sm:flex shadow-2xl shadow-[#2c4850] rounded-lg ">
         <form
           onSubmit={handleSubmit(registerHandler)}
-          className="sm:w-[350px]  w-[350px] py-8 px-4 sm:px-10 rounded-md"
+          className="sm:w-[350px]  w-[350px] py-8 px-4 sm:px-8 rounded-md"
         >
           <h1 className="text-center font-serif text-[#76ABAE] font-bold lg:text-2xl text-xl">
             Create an account
@@ -108,7 +108,7 @@ const RegisterPage = () => {
                 register={register}
                 min={6}
                 errors={errors}
-                className={"text-white"}
+                className={"text-white "}
               />
               <div
                 className="absolute right-3 top-3.5 cursor-pointer text-[#76ABAE] opacity-[0.5]"
@@ -132,7 +132,7 @@ const RegisterPage = () => {
             </button>
           </div>
 
-          <p className="text-center text-sm text-slate-300 mt-2 ">
+          <p className="text-center text-sm text-slate-300 mt-4 ">
             Already have an account?{" "}
             <Link className="font-semibold underline " to="/login">
               <span className="text-[#76ABAE] font-bold hover:text-white ">
@@ -143,7 +143,7 @@ const RegisterPage = () => {
           </p>
         </form>
         <div className="sm:flex hidden sm:w-[350px]  py-8 mt-4 items-center sm:px-8 px-4 rounded-md">
-          <img src="../public/images/login.png" alt="" className="h-5/6" />
+          <img src={`${import.meta.env.VITE_REACT_FRONTEND}/images/login.png`} alt="" className="h-5/6" />
         </div>
       </div>
     </div>

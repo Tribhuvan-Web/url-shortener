@@ -2,14 +2,19 @@ import { motion } from "framer-motion";
 import Inputfield from "../input/Inputfield";
 import "../styles/BackGround.css";
 import BackGround from "../backGround/BackGround";
+import Loader from "../../Loader";
+import React from "react";
 
 const HomePage = () => {
+  const [loading, setLoading] = React.useState(false);
 
   return (
     <>
-      <div className="min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900 lg:px-14 sm:px-8 px-4 py-20 overflow-visible text-white">
-      <BackGround />
-        <div className="lg:flex-row flex-col bg-gray-50 dark:bg-gray-900  lg:gap-10 gap-8 flex justify-between items-center">
+      <div className="min-h-[calc(100vh-64px)] bg-gray-900 lg:px-14 sm:px-8 px-4 py-20 overflow-visible text-white relative">
+      {loading && <Loader  />}
+
+        <BackGround />
+        <div className="lg:flex-row flex-col bg-gray-900  lg:gap-10 gap-8 flex justify-between items-center">
           <div className=" flex-1 ">
             <motion.h1
               initial={{ opacity: 0, y: -80 }}
@@ -30,7 +35,7 @@ const HomePage = () => {
               seconds. Simplify your sharing experience with Shortly today.
             </p>
             <div className="flex items-center my-16 pt-2 gap-3 ">
-              <Inputfield />
+              <Inputfield loading={loading} setLoading={setLoading} />
             </div>
           </div>
         </div>
@@ -47,7 +52,6 @@ const HomePage = () => {
           >
             Trusted by individuals and teams at the world best companies{}
           </motion.p> */}
-          
         </div>
       </div>
     </>

@@ -6,8 +6,9 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { Snackbar, Alert } from "@mui/material";
 import { useStoreContext } from "../../contextApi/ContextApi";
 import api from "../../api/api";
+import toast from "react-hot-toast";
 
-const Inputfield = ({ onValidUrl = null }) => {
+const Inputfield = ({ onValidUrl = null, loading, setLoading }) => {
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
   const [shortenUrl, setShortenUrl] = useState("");
@@ -25,7 +26,6 @@ const Inputfield = ({ onValidUrl = null }) => {
   };
 
   const handleSubmit = async (e) => {
-    console.log("clicked");
     e.preventDefault();
     if (validateUrl(url)) {
       setError("");
@@ -37,7 +37,7 @@ const Inputfield = ({ onValidUrl = null }) => {
   };
 
   const createShortUrlHandler = async (data) => {
-   
+    setLoading(true);
     try {
       const { data: res } = await api.post("/api/urls/shorten", data, {
         headers: {
@@ -50,10 +50,15 @@ const Inputfield = ({ onValidUrl = null }) => {
       const shortUrl = `${import.meta.env.VITE_REACT_FRONTEND}/s/${
         res.shortUrl
       }`;
+      toast.success(" URL Shortened successfully");
       setShortenUrl(shortUrl);
       setOpenModal(true);
+     
     } catch (error) {
+      toast.error("failed to shorten URL");
       setError("An error occurred. Please try again");
+    } finally {
+      setLoading(false);
     }
   };
   const handleCloseModal = () => {
@@ -63,13 +68,13 @@ const Inputfield = ({ onValidUrl = null }) => {
   };
 
   return (
-    <div className="p-8 sm:w-9/12  mx-auto bg-gray-50 dark:bg-gray-900 border-solid border-white border-2 static z-20 shadow-xl shadow-[#2c4850] rounded-3xl">
+    <div className="p-8 sm:w-9/12  mx-auto bg-gray-900 border-solid border-white border-2 static z-20 shadow-xl shadow-[#2c4850] rounded-3xl">
       <h1 className="text-3xl text-white font-bold mb-2">
         Shorten a long link
       </h1>
       <p className="mb-4 text-white">No payment required.</p>
 
-      <form onSubmit={handleSubmit} className="flex flex-col md:mt-12 " >
+      <form onSubmit={handleSubmit} className="flex flex-col md:mt-12 ">
         <span className="py-2 font-bold text-lg ">
           Type or paste your long link here
         </span>
@@ -94,40 +99,46 @@ const Inputfield = ({ onValidUrl = null }) => {
           </span>
         </button>
       </form>
-
-      <Modal open={openModal} className="flex items-center justify-center p-4">
-        <div className="bg-white rounded-xl p-6 w-full max-w-md items-center flex flex-col">
-          <h2 className="text-2xl font-bold mb-4 text-gray-800 mx-auto">
-            Your Shortened URL
-          </h2>
-          <div className="mb-6">
-            <div className="flex items-center gap-2">
-              <a
-                href={shortenUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline break-words text-md"
-              >
-                {shortenUrl}
-              </a>
-              <CopyToClipboard
-                text={shortenUrl}
-                onCopy={() => setCopyAlert(true)}
-              >
-                <button className="text-gray-500 hover:text-gray-700 p-1 rounded hover:bg-gray-100">
-                  <ContentCopyIcon fontSize="small" />
-                </button>
-              </CopyToClipboard>
+      {loading ? (
+        ""
+      ) : (
+        <Modal
+          open={openModal}
+          className="flex items-center justify-center p-4"
+        >
+          <div className="bg-white rounded-xl p-6 w-full max-w-md items-center flex flex-col">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800 mx-auto">
+              Your Shortened URL
+            </h2>
+            <div className="mb-6">
+              <div className="flex items-center gap-2">
+                <a
+                  href={shortenUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline break-words text-md"
+                >
+                  {shortenUrl}
+                </a>
+                <CopyToClipboard
+                  text={shortenUrl}
+                  onCopy={() => setCopyAlert(true)}
+                >
+                  <button className="text-gray-500 hover:text-gray-700 p-1 rounded hover:bg-gray-100">
+                    <ContentCopyIcon fontSize="small" />
+                  </button>
+                </CopyToClipboard>
+              </div>
             </div>
+            <button
+              onClick={handleCloseModal}
+              className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Close
+            </button>
           </div>
-          <button
-            onClick={handleCloseModal}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Close
-          </button>
-        </div>
-      </Modal>
+        </Modal>
+      )}
 
       <Snackbar
         open={copyAlert}
@@ -135,7 +146,7 @@ const Inputfield = ({ onValidUrl = null }) => {
         onClose={() => setCopyAlert(false)}
         className="fixed bottom-4 mx-auto"
       >
-        <Alert severity="success" variant="filled" >
+        <Alert severity="success" variant="filled">
           URL copied to clipboard!
         </Alert>
       </Snackbar>

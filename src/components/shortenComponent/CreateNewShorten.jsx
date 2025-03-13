@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useStoreContext } from "../../contextApi/ContextApi";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import TextField from "../TextField";
 import { Tooltip } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
@@ -28,6 +28,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
 
   const createShortUrlHandler = async (data) => {
     setLoading(true);
+    setCreating(true);
     try {
       const { data: res } = await api.post("/api/urls/shorten", data, {
         headers: {
@@ -42,7 +43,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
       }`;
 
       setShortenUrl(shortUrl);
-      setCreating(false);
+     
       await refetch();
     } catch (error) {
       toast.error("An error occurred. Please do try again", {
@@ -52,6 +53,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
       });
     } finally {
       setLoading(false);
+      setCreating(false);
     }
   };
 

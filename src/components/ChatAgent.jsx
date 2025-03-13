@@ -19,7 +19,7 @@ function ChatAgent() {
 
         if (window.innerWidth < 640) {
           // Small devices
-          setContainerSize({ height: "80vh", width: "90vw" });
+          setContainerSize({ height: "65vh", width: "90vw" });
         } else {
           // Larger devices
           setContainerSize({ height: "500px", width: "350px" });
@@ -37,7 +37,7 @@ function ChatAgent() {
 
   return (
     <div
-      className="fixed bottom-4 right-2 z-50 transition-all duration-300"
+      className="fixed bottom-4 right-2 z-40 transition-all duration-300"
       style={containerSize}
     >
       <iframe

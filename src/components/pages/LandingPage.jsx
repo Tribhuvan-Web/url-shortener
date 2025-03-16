@@ -13,7 +13,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <div className="min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900 lg:px-14 sm:px-8 px-4  text-white">
+      <div className="min-h-[calc(100vh-64px)] bg-gray-900 lg:px-14 sm:px-8 px-4  text-white">
       <BackGround />
         <div className="lg:flex-row flex-col px-5 lg:gap-10 gap-8 flex sm:py-2 py-20 justify-between items-center">
           <div className="  flex sm:flex-row flex-col items-center sm:justify-between sm:mt-14 mb-10 lg:gap-x-80 mx-auto">
@@ -45,14 +45,14 @@ const LandingPage = () => {
             </div>
             <div className="sm:w-[35%] w-full sm:py-6 py-16 justify-end items-center z-10 ">
               <img
-                src="public/images/bgimg.png"
+                src={`${import.meta.env.VITE_REACT_FRONTEND}/images/bgimg.png`}
                 alt="Landing Page Logo"
                 className=" object-cover "
               />
             </div>
           </div>
         </div>
-        <div className="sm:pt-12 pt-7">
+        <div className="sm:pt-16 pt-7">
           <motion.p
             initial={{ opacity: 0, y: 50 }}
             whileInView={{

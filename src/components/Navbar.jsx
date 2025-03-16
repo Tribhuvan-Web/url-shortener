@@ -14,7 +14,6 @@ const Navbar = () => {
   const [username, setUsername] = useState("");
   const [userDropDown, setUserDropDown] = useState(false);
 
-
   const logoutHandler = () => {
     setToken(null);
     localStorage.removeItem("JWT_TOKEN");
@@ -45,6 +44,9 @@ const Navbar = () => {
       if (window.innerWidth >= 640) {
         setNavbarOpen(false);
       }
+      if (window.innerWidth < 640) {
+        setUserDropDown(false);
+      }
     };
 
     window.addEventListener("resize", handleResize);
@@ -70,8 +72,12 @@ const Navbar = () => {
   };
 
   return (
-    <div className={"w-full h-16 z-50 flex sticky top-0 bg-[#2c4850]"}>
-      <div className="w-[55%] sm:px-10 sm:py-2 px-6 py-2">
+    <div
+      className={
+        "w-full h-16 z-50 flex sticky top-0 bg-[#2c4850] items-center justify-between"
+      }
+    >
+      <div className="w-[55%] sm:px-10 sm:py-2 px-6 py-2 ">
         <Link to={token ? "/home" : "/"}>
           <h1 className="font-bold text-3xl text-white italic">Shortly</h1>
         </Link>
@@ -150,12 +156,12 @@ const Navbar = () => {
               <div
                 className={` ${
                   userDropDown ? "scale-100 opacity-100" : ""
-                } absolute right-0 mt-3 w-64 origin-top-right scale-0 opacity-0 lg:group-hover:scale-100 lg:group-hover:opacity-100 transition-all duration-200`}
+                } absolute right-0 mt-4 w-64 origin-top-right scale-0 opacity-0 lg:group-hover:scale-100 lg:group-hover:opacity-100 transition-all duration-200`}
               >
                 <div className="bg-[#31363F] rounded-lg shadow-xl p-4 space-y-3 border border-[#76ABAE]/20">
                   <ul className="space-y-2 text-white">
                     <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
-                      <a href="#" className="flex items-center space-x-2">
+                      <a href="/terms-and-conditions" className="flex items-center space-x-2">
                         <svg
                           className="w-5 h-5"
                           fill="none"
@@ -173,7 +179,7 @@ const Navbar = () => {
                       </a>
                     </li>
                     <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
-                      <a href="#" className="flex items-center space-x-2">
+                      <a href="/privacy-policy" className="flex items-center space-x-2">
                         <svg
                           className="w-5 h-5"
                           fill="none"
@@ -238,46 +244,48 @@ const Navbar = () => {
             )}
             <div className="text-white my-2 items-center text-center">
               {token && (
-                <p className="font-semibold text-lg text-center">{username}</p>
+                <p className="font-semibold text-lg text-center overflow-auto">{username}</p>
               )}
-              <ul className="space-y-2 text-white mt-6">
-                <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
-                  <a href="#" className="flex items-center space-x-2">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
-                    <span>Terms & Conditions</span>
-                  </a>
-                </li>
-                <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
-                  <a href="#" className="flex items-center space-x-2">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                      />
-                    </svg>
-                    <span>Privacy Policy</span>
-                  </a>
-                </li>
-              </ul>
+              {token && (
+                <ul className="space-y-2 text-white mt-6 text-start">
+                  <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
+                    <a href="/terms-and-conditions" className="flex items-center space-x-2">
+                      <span>Terms & Conditions</span>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
+                    <a href="/privacy-policy" className="flex items-center space-x-2">
+                      <span>Privacy Policy</span>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              )}
               <hr className="text-white w-3/4 mx-auto" />
               {token && (
                 <button

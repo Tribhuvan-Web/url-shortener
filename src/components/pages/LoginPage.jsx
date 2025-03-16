@@ -8,12 +8,14 @@ import { useStoreContext } from "../../contextApi/ContextApi";
 import { FaUser, FaEye, FaEyeSlash } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const { setToken } = useStoreContext();
+  const { setUsername } = useStoreContext();
 
   const {
     register,
@@ -37,6 +39,7 @@ const LoginPage = () => {
       localStorage.setItem("JWT_TOKEN", JSON.stringify(response.token));
       toast.success("Login successful!");
       reset();
+      setUsername(data.username);
       navigate("/home");
     } catch (error) {
       toast.error(error.response.data);
@@ -46,8 +49,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-64px)] bg-gray-50 dark:bg-gray-900 p-4 flex justify-center items-center">
-      <div className="sm:w-[700px] w-[600] sm:m-4 m-1 sm:my-28  sm:flex shadow-2xl shadow-[#2c4850] rounded-lg">
+    <div className="min-h-[calc(100vh-64px)] bg-gray-900 p-4 flex justify-center items-start sm:items-center">
+      <div className="sm:w-[700px] sm:m-4 mt-20  sm:my-28  sm:flex shadow-2xl shadow-[#2c4850] rounded-lg">
         <form
           onSubmit={handleSubmit(LoginHandler)}
           className="sm:w-[350px] w-[350px] py-8 sm:px-8 px-4 rounded-md"
@@ -91,7 +94,7 @@ const LoginPage = () => {
                 register={register}
                 min={6}
                 errors={errors}
-                className={"text-white w-full pr-2"}
+                className={"text-white"}
               />
               <div
                 className="absolute right-3 top-3.5 cursor-pointer text-[#76ABAE] opacity-[0.5]"
@@ -127,7 +130,7 @@ const LoginPage = () => {
           </p>
         </form>
         <div className="sm:flex hidden w-[350px] py-8 mt-4 items-center sm:px-4 rounded-md">
-          <img src="../public/images/login.png" alt="login.png" className="h-5/6" />
+          <img src={`${import.meta.env.VITE_REACT_FRONTEND}/images/login.png`} alt="login.png" className="h-5/6" />
         </div>
       </div>
     </div>

@@ -11,24 +11,20 @@ const Footer = () => {
         </div>
 
         <p className="mt-4 lg:mt-0">
-          &copy; 2024 ShortLy. All rights reserved.
+          &copy; 2025 ShortLy. All rights reserved.
         </p>
 
         <div className="flex space-x-6 mt-4 lg:mt-0">
-          <a href="#" className="hover:text-gray-200">
+          <a href="https://www.facebook.com" className="hover:text-gray-200" target="_blank" rel="noopener noreferrer">
             <FaFacebook size={24} />
           </a>
-          <a href="#" className="hover:text-gray-200">
+          <a href="https://www.twitter.com" className="hover:text-gray-200" target="_blank" rel="noopener noreferrer">
             <FaTwitter size={24} />
           </a>
-          <a href="#" className="hover:text-gray-200">
+          <a href="https://www.instagram.com" className="hover:text-gray-200" target="_blank" rel="noopener noreferrer">
             <FaInstagram size={24} />
           </a>
-          <a
-            href="https://www.linkedin.com/in/tribhuvan-nath-sagar/"
-            className="hover:text-gray-200"
-            target="_blank"
-          >
+          <a href="https://www.linkedin.com/in/tribhuvan-nath-sagar/" className="hover:text-gray-200" target="_blank" rel="noopener noreferrer">
             <FaLinkedin size={24} />
           </a>
         </div>

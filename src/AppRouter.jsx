@@ -11,8 +11,8 @@ import DashboardLayout from "./Dashboard/DashboardLayout";
 import ShortenUrlPage from "./components/ShortenUrlPage";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "./components/pages/ErrorPage";
-import ChatAgent from "./components/ChatAgent";
-import { Home } from "@mui/icons-material";
+import TermsAndConditionsPage from "./components/pages/TermsAndConditionsPage";
+import PrivacyPolicyPage from "./components/pages/PrivacyPolicyPage";
 
 const AppRouter = () => {
   const location = useLocation();
@@ -21,7 +21,7 @@ const AppRouter = () => {
   return (
     <>
       {!hideHeaderFooter && <Navbar />}
-     
+
       <Toaster position="bottom-center" />
       <Routes>
         <Route
@@ -89,8 +89,25 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/terms-and-conditions"
+          element={
+            <PrivateRoute publicPage={false}>
+              <TermsAndConditionsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/privacy-policy"
+          element={
+            <PrivateRoute publicPage={false}>
+              <PrivacyPolicyPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="/s/:url" element={<ShortenUrlPage />} />
       </Routes>
+
       {!hideHeaderFooter && <Footer />}
     </>
   );

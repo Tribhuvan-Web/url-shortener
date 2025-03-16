@@ -16,7 +16,15 @@ function ChatAgent() {
 
     const handleMessage = (event) => {
       if (event.data.type === "webchat:opened") {
-        setContainerSize({ height: "500px", width: "350px" });
+
+        if (window.innerWidth < 640) {
+          // Small devices
+          setContainerSize({ height: "65vh", width: "90vw" });
+        } else {
+          // Larger devices
+          setContainerSize({ height: "500px", width: "350px" });
+        }
+
       } else if (event.data.type === "webchat:closed") {
         setContainerSize({ height: "100px", width: "100px" });
       }
@@ -29,7 +37,7 @@ function ChatAgent() {
 
   return (
     <div
-      className="fixed bottom-4 right-2 z-50 transition-all duration-300"
+      className="fixed bottom-4 right-2 z-40 transition-all duration-300"
       style={containerSize}
     >
       <iframe
@@ -60,7 +68,7 @@ function ChatAgent() {
                         },
                         "termsOfService": {},
                         "privacyPolicy": {},
-                        "color": "#2c4850",
+                        "color": "#32606d",
                         "variant": "solid",
                         "themeMode": "light",
                         "fontFamily": "inter",

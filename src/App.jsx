@@ -10,7 +10,7 @@ export default function App() {
     <>
       <Router>
         <CurrentApp />
-        {/* <ChatAgent /> */}
+        <ChatAgent />
       </Router>
     </>
   );

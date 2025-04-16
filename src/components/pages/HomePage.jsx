@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <>
       <div className="min-h-[calc(100vh-64px)] bg-gray-900 lg:px-14 sm:px-8 px-4 py-20 overflow-visible text-white relative">
-      {loading && <Loader  />}
+        {loading && <Loader />}
 
         <BackGround />
         <div className="lg:flex-row flex-col bg-gray-900  lg:gap-10 gap-8 flex justify-between items-center">
@@ -39,20 +39,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="sm:pt-12 pt-7">
-          {/* <motion.p
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="font-roboto font-bold lg:w-[60%]  md:w-[70%] sm:w-[80%] mx-auto text-3xl sm:text-center"
-          >
-            Trusted by individuals and teams at the world best companies{}
-          </motion.p> */}
-        </div>
+        <div className="sm:pt-12 pt-7"></div>
       </div>
     </>
   );

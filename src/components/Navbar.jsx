@@ -93,7 +93,7 @@ const Navbar = () => {
           className={
             "flex flex-col sm:flex-row sm:gap-6 gap-3 text-white sm:mt-0 mt-14"
           }
-        >
+        > 
           <li className="hover:font-bold font-[500]">
             <Link
               className={`${
@@ -161,7 +161,10 @@ const Navbar = () => {
                 <div className="bg-[#31363F] rounded-lg shadow-xl p-4 space-y-3 border border-[#76ABAE]/20">
                   <ul className="space-y-2 text-white">
                     <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
-                      <a href="/terms-and-conditions" className="flex items-center space-x-2">
+                      <a
+                        href="/terms-and-conditions"
+                        className="flex items-center space-x-2"
+                      >
                         <svg
                           className="w-5 h-5"
                           fill="none"
@@ -179,7 +182,10 @@ const Navbar = () => {
                       </a>
                     </li>
                     <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
-                      <a href="/privacy-policy" className="flex items-center space-x-2">
+                      <a
+                        href="/privacy-policy"
+                        className="flex items-center space-x-2"
+                      >
                         <svg
                           className="w-5 h-5"
                           fill="none"
@@ -194,6 +200,28 @@ const Navbar = () => {
                           />
                         </svg>
                         <span>Privacy Policy</span>
+                      </a>
+                    </li>
+                    <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
+                      <a
+                        href="/contact-us"
+                        className="flex items-center space-x-2"
+                      >
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 12V10"
+                          />
+                        </svg>
+
+                        <span>Contact Us</span>
                       </a>
                     </li>
                   </ul>
@@ -244,12 +272,17 @@ const Navbar = () => {
             )}
             <div className="text-white my-2 items-center text-center">
               {token && (
-                <p className="font-semibold text-lg text-center overflow-auto">{username}</p>
+                <p className="font-semibold text-lg text-center overflow-auto text-wrap">
+                  {username}
+                </p>
               )}
               {token && (
                 <ul className="space-y-2 text-white mt-6 text-start">
                   <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
-                    <a href="/terms-and-conditions" className="flex items-center space-x-2">
+                    <a
+                      href="/terms-and-conditions"
+                      className="flex items-center space-x-2"
+                    >
                       <span>Terms & Conditions</span>
                       <svg
                         className="w-5 h-5"
@@ -267,7 +300,10 @@ const Navbar = () => {
                     </a>
                   </li>
                   <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
-                    <a href="/privacy-policy" className="flex items-center space-x-2">
+                    <a
+                      href="/privacy-policy"
+                      className="flex items-center space-x-2"
+                    >
                       <span>Privacy Policy</span>
                       <svg
                         className="w-5 h-5"
@@ -282,6 +318,29 @@ const Navbar = () => {
                           d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                         />
                       </svg>
+                    </a>
+                  </li>
+                  <li className="hover:bg-[#76ABAE]/20 px-3 py-2 rounded-md transition-colors">
+                    <a
+                      href="/contact-us"
+                      className="flex items-center space-x-2"
+                    >
+                       <span>Contact Us</span>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 12V10"
+                        />
+                      </svg>
+
+                     
                     </a>
                   </li>
                 </ul>

@@ -13,7 +13,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <div className="min-h-[calc(100vh-64px)] bg-gray-900 lg:px-14 sm:px-8 px-4  text-white">
+      <div className="min-h-[calc(100vh-64px)] bg-gray-900 lg:px-14 sm:px-8 px-4  text-white pb-7">
       <BackGround />
         <div className="lg:flex-row flex-col px-5 lg:gap-10 gap-8 flex sm:py-2 py-20 justify-between items-center">
           <div className="  flex sm:flex-row flex-col items-center sm:justify-between sm:mt-14 mb-10 lg:gap-x-80 mx-auto">

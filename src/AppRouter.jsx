@@ -13,6 +13,7 @@ import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "./components/pages/ErrorPage";
 import TermsAndConditionsPage from "./components/pages/TermsAndConditionsPage";
 import PrivacyPolicyPage from "./components/pages/PrivacyPolicyPage";
+import ContactUsPage from "./components/pages/ContactUsPage";
 
 const AppRouter = () => {
   const location = useLocation();
@@ -102,6 +103,14 @@ const AppRouter = () => {
           element={
             <PrivateRoute publicPage={false}>
               <PrivacyPolicyPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/contact-us"
+          element={
+            <PrivateRoute publicPage={false}>
+             <ContactUsPage />
             </PrivateRoute>
           }
         />

@@ -32,7 +32,9 @@ function PrivacyPolicyPage() {
         </p>
         <h2 className="text-2xl font-semibold mb-2">Contact Us</h2>
         <p className="mb-8">
-          If you have any questions about this privacy policy, please contact us at support@yoururlshortener.com.
+          If you have any questions about this privacy policy, please contact us at <a href="mailto:amitraj730182@gmail.com" className="text-blue-500 transition">
+                support@shortly.com
+              </a>
         </p>
       </div>
     </div>

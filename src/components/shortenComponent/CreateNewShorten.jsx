@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useStoreContext } from "../../contextApi/ContextApi";
 import { set, useForm } from "react-hook-form";
-import TextField from "../TextField";
+import TextField from "../otherComponent/TextField";
 import { Tooltip } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
 import toast from "react-hot-toast";

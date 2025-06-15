@@ -1,8 +1,8 @@
 import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import ReadMoreButton from "../ReadMoreButton";
-import ViewLessButton from "../ViewLessButton";
+import ViewLessButton from "../otherComponent/ViewLessButton";
+import ReadMoreButton from "../otherComponent/ReadMoreButton";
 
 const AboutPage = () => {
   const [isInView1, setIsInView1] = useState(false);

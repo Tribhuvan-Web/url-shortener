@@ -2,9 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoIosMenu, IoMdArrowDropdown } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
-import "../App.css";
-import { useStoreContext } from "../contextApi/ContextApi";
-import api from "../api/api";
+import { useStoreContext } from "../../contextApi/ContextApi";
+import api from "../../api/api";
 
 const Navbar = () => {
   const navigate = useNavigate();

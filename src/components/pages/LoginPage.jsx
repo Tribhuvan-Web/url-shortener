@@ -8,7 +8,6 @@ import { useStoreContext } from "../../contextApi/ContextApi";
 import { FaUser, FaEye, FaEyeSlash } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 
-
 const LoginPage = () => {
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
@@ -70,7 +69,7 @@ const LoginPage = () => {
             </div>
             <TextField
               required
-              id="username"
+              id="usernameOrEmail"
               type="text"
               message="*Username is required"
               placeholder="Type your username"
@@ -113,11 +112,15 @@ const LoginPage = () => {
             <button
               disabled={loader}
               type="submit"
-              className="bg-customRed font-semibold text-white bg-gradient-to-bl from-[#235d5d] to-[#5c7474] w-[50%] py-2 hover:text-slate-400 transition-colors duration-100 rounded-full my-3"
+              className="bg-customRed font-semibold text-white bg-gradient-to-bl from-[#235d5d] to-[#5c7474] w-[100%] py-2 hover:text-slate-400 transition-colors duration-100 rounded-full my-3"
             >
               {loader ? "Loading..." : "LogIn"}
             </button>
           </div>
+
+          <p className="text-blue-400 text-center">
+            <Link to="/reset">Forgotten Password?</Link>
+          </p>
 
           <p className="text-center text-sm text-slate-300 mt-4">
             Don't have an account?{" "}
@@ -130,7 +133,11 @@ const LoginPage = () => {
           </p>
         </form>
         <div className="sm:flex hidden w-[350px] py-8 mt-4 items-center sm:px-4 rounded-md">
-          <img src={`${import.meta.env.VITE_REACT_FRONTEND}/images/login.png`} alt="login.png" className="h-5/6" />
+          <img
+            src={`${import.meta.env.VITE_REACT_FRONTEND}/images/login.png`}
+            alt="login.png"
+            className="h-5/6"
+          />
         </div>
       </div>
     </div>

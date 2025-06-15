@@ -35,11 +35,6 @@ const TextField = ({
         /^(https?:\/\/)?(([a-zA-Z0-9\u00a1-\uffff-]+\.)+[a-zA-Z\u00a1-\uffff]{2,})(:\d{2,5})?(\/[^\s]*)?$/,
       message: "Please enter a valid URL",
     };
-  } else if (type === "password") {
-    validationRules.pattern = {
-      value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-      message: "Password must consist of minimum 4 characters and 4 number ",
-    };
   }
 
   return (

@@ -14,6 +14,8 @@ import ErrorPage from "./components/pages/ErrorPage";
 import TermsAndConditionsPage from "./components/pages/TermsAndConditionsPage";
 import PrivacyPolicyPage from "./components/pages/PrivacyPolicyPage";
 import ContactUsPage from "./components/pages/ContactUsPage";
+import ForgotPassword from "./components/authPart/ForgotPassword";
+import ResetPassword from "./components/authPart/ResetPassword";
 
 const AppRouter = () => {
   const location = useLocation();
@@ -83,6 +85,14 @@ const AppRouter = () => {
           }
         />
         <Route
+          path="/reset-password"
+          element={
+            <PrivateRoute publicPage={true}>
+              <ResetPassword />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/dashboard"
           element={
             <PrivateRoute publicPage={false}>
@@ -110,7 +120,15 @@ const AppRouter = () => {
           path="/contact-us"
           element={
             <PrivateRoute publicPage={false}>
-             <ContactUsPage />
+              <ContactUsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/reset"
+          element={
+            <PrivateRoute publicPage={true}>
+              <ForgotPassword />
             </PrivateRoute>
           }
         />
